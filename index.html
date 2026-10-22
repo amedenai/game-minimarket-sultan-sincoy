@@ -1,20 +1,305 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SINCOY MART UNICORN</title><style>*{margin:0;padding:0;box-sizing:border-box}body{margin:0;background:#a0d8ef;overflow:hidden;font-family:system-ui;font-weight:900}#c{display:block;width:100vw;height:100vh}#hud{position:fixed;top:8px;left:8px;right:8px;display:flex;gap:6px;z-index:20}.badge{background:#fff;border:3px solid #000;border-radius:100px;padding:8px;font-size:10px;box-shadow:4px 4px 0 #000;flex:1;text-align:center}#menu{position:fixed;inset:0;z-index:100;background:linear-gradient(#a0d8ef,#ffeb3b,#7b2cbf);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;text-align:center}.card{background:#fff;border:5px solid #000;border-radius:24px;padding:18px;max-width:360px;box-shadow:12px 12px 0 #000}.btn{width:100%;padding:14px;border-radius:100px;border:4px solid #000;background:#ffeb3b;color:#000;font-weight:900;font-size:16px;margin-top:10px}</style></head><body><canvas id="c"></canvas><div id="hud"><div class="badge">💰 Rp <span id="money">80000</span></div><div class="badge">🦄 <span id="cust">0</span></div><div class="badge">⭐ <span id="rating">5.0</span></div></div><div id="menu"><div style="font-size:80px">🦄🥥</div><h1>SINCOY MART<br>UNICORN</h1><div class="card"><p style="font-size:12px">Toko unicorn Sincoy! Jual kelapa, snack, minuman! Tap rak buat restock!</p><button class="btn" id="play">🦄 BUKA TOKO!</button></div></div><script>
-let canvas=document.getElementById('c'),ctx=canvas.getContext('2d');
-function rs(){canvas.width=innerWidth*2;canvas.height=innerHeight*2;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';}
-rs();let S={money:80000,cust:0,rating:5,playing:false,shelves:{a:100,b:100,c:100},queue:[]};
-let shelves=[{x:40,y:140,w:canvas.width/2-60,h:180,t:'🦄 UNICORN',k:'a'},{x:40,y:350,w:canvas.width/2-60,h:180,t:'🥥 KELAPA',k:'b'},{x:canvas.width/2+20,y:140,w:canvas.width/2-60,h:180,t:'🥤 MINUM',k:'c'},{x:canvas.width/2+20,y:350,w:canvas.width/2-60,h:140,t:'KASIR',k:'z'}];
-let customers=[];
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>SINCOY MART UNICORN SULTAN HD</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;user-select:none;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:#87CEEB;overflow:hidden;font-family:'Fredoka',system-ui;font-weight:700;touch-action:none}
+#c{position:fixed;inset:0;width:100vw;height:100vh;display:block}
+#hud{position:fixed;top:10px;left:10px;right:10px;display:flex;gap:8px;z-index:30}
+.hud{flex:1;background:#fff;border:3.5px solid #000;border-radius:100px;padding:10px 6px;text-align:center;font-size:12px;box-shadow:0 5px 0 #000;display:flex;align-items:center;justify-content:center;gap:4px}
+#shopBtns{position:fixed;bottom:12px;left:10px;right:10px;display:flex;gap:8px;z-index:30}
+.sbtn{flex:1;background:#fff;border:3px solid #000;border-radius:16px;padding:10px 4px;text-align:center;font-size:10px;box-shadow:0 4px 0 #000}
+.sbtn b{display:block;font-size:16px}
+#cashierUI{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(#fff,#e8e8e8);border-top:5px solid #000;z-index:25;padding:10px;display:none;flex-direction:column;align-items:center;box-shadow:0 -10px 30px rgba(0,0,0,.2)}
+#queue{position:fixed;bottom:135px;left:8px;right:8px;display:flex;gap:8px;overflow-x:auto;z-index:24;padding-bottom:4px}
+.q{flex:0 0 auto;width:68px;height:68px;background:#fff;border:3px solid #000;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:4px 4px 0 #000;font-size:28px}
+.q.active{border-color:#7b2cbf;transform:scale(1.1);background:#ffeb3b}
+#menu{position:fixed;inset:0;z-index:100;background:radial-gradient(circle at 30% 20%,#a0e8ff 0%,#87CEEB 20%,#7b2cbf 70%,#4a148c 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px}
+.card{background:#fff;border:5px solid #000;border-radius:28px;padding:20px;width:100%;max-width:400px;box-shadow:14px 14px 0 #000;text-align:center}
+.logo{width:110px;height:110px;background:#fff;border:4px solid #000;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:60px;box-shadow:8px 8px 0 #000;overflow:hidden}
+.btn{width:100%;padding:16px;border-radius:100px;border:4px solid #000;font-weight:900;font-size:16px;margin-top:10px;box-shadow:0 6px 0 #000;cursor:pointer}
+.btn:active{transform:translateY(4px);box-shadow:0 2px 0 #000}
+.btn-yellow{background:#ffeb3b;color:#000}
+.btn-purple{background:#7b2cbf;color:#fff}
+#soundToggle{position:fixed;top:60px;right:10px;z-index:31;background:#fff;border:3px solid #000;border-radius:100px;padding:6px 10px;font-size:12px;box-shadow:0 3px 0 #000}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud">
+<div class="hud">💰 Rp <span id="money">80.000</span></div>
+<div class="hud">🧍 <span id="cust">0</span> Pelanggan</div>
+<div class="hud">⭐ <span id="star">5.0</span></div>
+</div>
+<button id="soundToggle">🔊 Suara ON</button>
+<div id="queue"></div>
+<div id="cashierUI">
+<div style="font-size:11px;letter-spacing:1px">🦄 KASIR SINCOY MART - MESIN KASIR UNICORN</div>
+<div id="bill" style="display:flex;gap:8px;margin:8px 0;flex-wrap:wrap;justify-content:center"></div>
+<div style="display:flex;gap:10px;align-items:center">
+<button class="btn btn-yellow" id="payBtn" style="width:auto;padding:10px 24px;margin:0">💳 BAYAR Rp <span id="total">0</span> • *TIK TIK* 🔊</button>
+<div id="machine" style="width:54px;height:42px;background:#222;border:3px solid #000;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#0f0;font-family:monospace;font-size:10px">$$</div>
+</div>
+</div>
+<div id="shopBtns">
+<div class="sbtn" data-k="uni"><b>🦄</b>Unicorn<br>Rp6k<br><span id="pUni">100%</span></div>
+<div class="sbtn" data-k="drink"><b>🥤</b>Minum<br>Rp5k<br><span id="pDrink">100%</span></div>
+<div class="sbtn" data-k="kelapa"><b>🥥</b>Kelapa<br>Rp15k<br><span id="pKelapa">100%</span></div>
+<div class="sbtn" data-k="snack"><b>🍪</b>Snack<br>Rp8k<br><span id="pSnack">100%</span></div>
+</div>
+
+<div id="menu">
+<div class="logo">🦄</div>
+<h1 style="font-size:32px;line-height:.9;color:#fff;text-shadow:4px 4px 0 #000">SINCOY MART<br><span style="background:#ffeb3b;color:#000;padding:2px 12px;border-radius:12px;border:3px solid #000">UNICORN SULTAN HD</span></h1>
+<div class="card" style="margin-top:14px">
+<div style="text-align:left;font-size:12px;line-height:1.5">
+✅ <b>HD FULL</b> - rak penuh, bayangan, animasi halus<br>
+✅ <b>4 Rak SULTAN:</b> Unicorn, Minum, Kelapa, Snack<br>
+✅ <b>Kasir Mesin:</b> ada mesin kasir + struk + suara *TIK TIK TIK* + *DING!*<br>
+✅ <b>Pelanggan:</b> 5 karakter jalan bawa keranjang<br>
+✅ <b>Suara:</b> ketikan kasir, ding kasir, restock<br>
+✅ <b>Menu:</b> Main Menu, Pause, Menang, Kalah
+</div>
+<button class="btn btn-yellow" id="playBtn">🦄 BUKA TOKO SULTAN HD!</button>
+<button class="btn btn-purple" onclick="alert('Cara Main:\\n1. Lihat pelanggan masuk bawa list\\n2. Tap RAK bawah buat restock (bayar)\\n3. Pelanggan antri di kasir\\n4. Tap pelanggan → Tap BAYAR\\n5. Suara kasir TIK TIK DING!\\n6. Target Rp 500.000 jadi SULTAN!')">📖 CARA MAIN</button>
+<div style="font-size:9px;margin-top:8px;opacity:.6">SINCOY MART by Tuan - Unicorn Edition HD - 2025</div>
+</div>
+</div>
+
+<script>
+// SOUND SYSTEM HD
+let audioCtx, soundOn=true;
+function initAudio(){if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();}
+function beep(freq, dur, type='sine', vol=0.3){
+if(!soundOn||!audioCtx)return;
+let o=audioCtx.createOscillator(), g=audioCtx.createGain();
+o.type=type;o.frequency.value=freq;o.connect(g);g.connect(audioCtx.destination);
+g.gain.setValueAtTime(vol, audioCtx.currentTime);
+g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime+dur);
+o.start();o.stop(audioCtx.currentTime+dur);
+}
+function soundType(){beep(1200+Math.random()*400,0.06,'square',0.25);setTimeout(()=>beep(900,0.04,'square',0.2),40);}
+function soundCash(){beep(800,0.1,'sine',0.4);setTimeout(()=>beep(1200,0.3,'sine',0.5),100);setTimeout(()=>beep(1600,0.4,'sine',0.4),220);}
+function soundRestock(){beep(300,0.15,'sawtooth',0.3);setTimeout(()=>beep(600,0.15,'sawtooth',0.3),120);}
+function soundPop(){beep(500,0.08,'sine',0.3);}
+
+document.getElementById('soundToggle').onclick=function(){soundOn=!soundOn;this.textContent=soundOn?'🔊 Suara ON':'🔇 Suara OFF';if(soundOn){initAudio();soundPop();}};
+
+let canvas=document.getElementById('c'), ctx=canvas.getContext('2d');
+let DPR=Math.min(2,devicePixelRatio||1);
+function resize(){canvas.width=innerWidth*DPR;canvas.height=innerHeight*DPR;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';ctx.setTransform(DPR,0,0,DPR,0,0);}
+resize();addEventListener('resize',resize);
+
+let S={money:80000,cust:0,star:5,playing:false,stock:{uni:100,drink:100,kelapa:100,snack:100},queue:[],sel:null};
+let customers=[], shelves=[], time=0;
+
+function mkShelves(){
+let W=innerWidth, H=innerHeight;
+shelves=[
+{x:14,y:110,w:W/2-20,h:160,k:'uni',name:'🦄 UNICORN MART',color:'#7b2cbf',price:6000},
+{x:W/2+6,y:110,w:W/2-20,h:160,k:'drink',name:'🥤 MINUMAN DINGIN',color:'#0091ea',price:5000},
+{x:14,y:280,w:W/2-20,h:160,k:'kelapa',name:'🥥 KELAPA SULTAN',color:'#6d4c41',price:15000},
+{x:W/2+6,y:280,w:W/2-20,h:160,k:'snack',name:'🍪 SNACK UNICORN',color:'#ff6f00',price:8000},
+];
+}
+mkShelves();
+
+function drawShelf(s){
+let pct=S.stock[s.k]/100;
+// shadow
+ctx.fillStyle='rgba(0,0,0,0.18)';ctx.beginPath();ctx.roundRect(s.x+5,s.y+6,s.w,s.h,14);ctx.fill();
+// body
+ctx.fillStyle='#ffffff';ctx.strokeStyle='#000';ctx.lineWidth=3.5;ctx.beginPath();ctx.roundRect(s.x,s.y,s.w,s.h,14);ctx.fill();ctx.stroke();
+// header
+ctx.fillStyle=s.color;ctx.beginPath();ctx.roundRect(s.x,s.y,s.w,32,14);ctx.fill();ctx.fillRect(s.x,s.y+16,s.w,16);
+ctx.strokeStyle='#000';ctx.lineWidth=3.5;ctx.beginPath();ctx.roundRect(s.x,s.y,s.w,32,14);ctx.stroke();
+ctx.fillStyle='#fff';ctx.font='700 11px Fredoka';ctx.textAlign='center';ctx.fillText(s.name,s.x+s.w/2,s.y+20);
+// items HD
+let cols=4, rows=2;
+for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){
+let idx=r*cols+c;
+if(idx>=Math.floor(pct*8))continue;
+let px=s.x+8+c*(s.w-16)/cols, py=s.y+42+r*52;
+// platform
+ctx.fillStyle='rgba(0,0,0,0.06)';ctx.beginPath();ctx.ellipse(px+14,py+28,14,4,0,0,6.28);ctx.fill();
+if(s.k==='uni'){
+ctx.font='26px Arial';ctx.textAlign='center';ctx.fillText('🦄',px+14,py+26);
+ctx.fillStyle='#ffeb3b';ctx.font='700 7px Fredoka';ctx.fillText('Rp6k',px+14,py+38);
+}else if(s.k==='drink'){
+// bottle HD
+ctx.fillStyle='#e1f5fe';ctx.strokeStyle='#000';ctx.lineWidth=2;ctx.beginPath();ctx.roundRect(px+4,py,20,30,8);ctx.fill();ctx.stroke();
+ctx.fillStyle='#0091ea';ctx.fillRect(px+8,py+8,12,14);
+ctx.fillStyle='#fff';ctx.font='700 6px Arial';ctx.fillText('AQUA',px+14,py+16);
+}else if(s.k==='kelapa'){
+ctx.fillStyle='#8d6e63';ctx.beginPath();ctx.arc(px+14,py+14,13,0,6.28);ctx.fill();ctx.strokeStyle='#3e2723';ctx.lineWidth=2;ctx.stroke();
+ctx.fillStyle='#fff';ctx.beginPath();ctx.ellipse(px+14,py+6,5,3,0,0,6.28);ctx.fill();
+ctx.fillStyle='#ffeb3b';ctx.strokeStyle='#000';ctx.lineWidth=1.5;ctx.beginPath();ctx.roundRect(px+2,py+28,24,10,5);ctx.fill();ctx.stroke();
+ctx.fillStyle='#000';ctx.font='700 6px Fredoka';ctx.textAlign='center';ctx.fillText('15K',px+14,py+35);
+}else{
+// snack
+ctx.fillStyle='#ffcc80';ctx.strokeStyle='#000';ctx.lineWidth=2;ctx.beginPath();ctx.roundRect(px,py,26,24,6);ctx.fill();ctx.stroke();
+ctx.fillStyle='#bf360c';ctx.font='700 8px Fredoka';ctx.textAlign='center';ctx.fillText('CHOCO',px+13,py+15);
+}
+}
+// stock bar
+let barW=s.w-16, barH=8;
+ctx.fillStyle='#eee';ctx.strokeStyle='#000';ctx.lineWidth=2;ctx.beginPath();ctx.roundRect(s.x+8,s.y+s.h-16,barW,barH,4);ctx.fill();ctx.stroke();
+ctx.fillStyle=pct<0.3?'#ff1744':pct<0.6?'#ff9100':'#00e676';ctx.beginPath();ctx.roundRect(s.x+8,s.y+s.h-16,barW*pct,barH,4);ctx.fill();
+}
+
 function draw(){
-let w=canvas.width,h=canvas.height;ctx.fillStyle='#a0d8ef';ctx.fillRect(0,0,w,h);
-ctx.fillStyle='#fff';for(let i=0;i<15;i++){ctx.beginPath();ctx.arc((i*173)%w,(i*97)%300,12,0,7);ctx.fill();}
-shelves.forEach(s=>{ctx.fillStyle='#fff';ctx.strokeStyle='#000';ctx.lineWidth=4;ctx.fillRect(s.x,s.y,s.w,s.h);ctx.strokeRect(s.x,s.y,s.w,s.h);ctx.fillStyle=s.k==='z'?'#ffeb3b':'#7b2cbf';ctx.fillRect(s.x,s.y,s.w,30);ctx.strokeRect(s.x,s.y,s.w,30);ctx.fillStyle=s.k==='z'?'#000':'#fff';ctx.font='bold 14px Arial';ctx.textAlign='center';ctx.fillText(s.t,s.x+s.w/2,s.y+20);if(s.k!=='z'){let cnt=Math.floor(S.shelves[s.k]/18);for(let i=0;i<cnt;i++){let px=s.x+10+i*30,py=s.y+50+(i%2)*50;ctx.font='22px Arial';ctx.fillText(s.k==='a'?'🦄':s.k==='b'?'🥥':'🥤',px,py);}}});
-customers.forEach(c=>{ctx.font='32px Arial';ctx.fillText(c.i,c.x,c.y);});
+let W=innerWidth,H=innerHeight;
+time+=0.016;
+// sky gradient HD
+let g=ctx.createLinearGradient(0,0,0,H);
+g.addColorStop(0,'#b3e5fc');g.addColorStop(0.4,'#81d4fa');g.addColorStop(1,'#e1f5fe');
+ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+// clouds HD
+ctx.fillStyle='rgba(255,255,255,0.9)';
+for(let i=0;i<8;i++){
+let x=(i*213+time*10)%(W+100)-50, y=70+(Math.sin(i)*20);
+ctx.beginPath();ctx.arc(x,y,18,0,6.28);ctx.arc(x+22,y+4,22,0,6.28);ctx.arc(x+46,y,16,0,6.28);ctx.fill();
 }
-function spawn(){if(!S.playing||customers.length>5)return;customers.push({x:100+Math.random()*(canvas.width-200),y:canvas.height,tx:100+Math.random()*(canvas.width-200),ty:180+Math.random()*300,i:['🧕','👩‍🎓','👶','🦄'][Math.floor(Math.random()*4)],w:['a','b','c'][Math.floor(Math.random()*3)],s:'go'});}
-function upd(){
-if(!S.playing)return;customers.forEach((c,i)=>{let dx=c.tx-c.x,dy=c.ty-c.y,d=Math.hypot(dx,dy);if(d<10){if(S.shelves[c.w]>5){S.shelves[c.w]-=15;S.queue.push(c);customers.splice(i,1);}else{customers.splice(i,1);}}else{c.x+=dx*0.03;c.y+=dy*0.03;}});draw();requestAnimationFrame(upd);
+// stars
+ctx.fillStyle='rgba(255,235,59,0.9)';ctx.font='14px Arial';
+for(let i=0;i<12;i++){let x=(i*137+time*20)%W, y=90+(i%4)*30;ctx.fillText('⭐',x,y);}
+// floor tiles HD
+ctx.fillStyle='#fff';ctx.fillRect(0,460,W,H-460);
+ctx.strokeStyle='rgba(0,0,0,0.06)';ctx.lineWidth=1;
+for(let x=0;x<W;x+=40){ctx.beginPath();ctx.moveTo(x,460);ctx.lineTo(x,H);ctx.stroke();}
+for(let y=460;y<H;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+// shelves
+shelves.forEach(drawShelf);
+// customers HD
+customers.forEach(c=>{
+let bob=Math.sin(time*4+c.x*0.01)*3;
+ctx.font='36px Arial';ctx.textAlign='center';ctx.fillText(c.icon,c.x,c.y+bob);
+// cart
+if(c.cart.length>0){ctx.font='18px Arial';ctx.fillText('🧺',c.x+18,c.y-12+bob);ctx.fillStyle='#000';ctx.font='700 10px Fredoka';ctx.fillText(c.cart.length,c.x+18,c.y-2+bob);}
+// speech if empty
+if(S.stock[c.want]<12){
+ctx.fillStyle='#fff';ctx.strokeStyle='#000';ctx.lineWidth=2.5;ctx.beginPath();ctx.roundRect(c.x-36,c.y-58,72,24,10);ctx.fill();ctx.stroke();
+ctx.fillStyle='#000';ctx.font='700 11px Fredoka';ctx.fillText('Habis 😭',c.x,c.y-42);
 }
-let qDiv=document.createElement('div');qDiv.style.cssText='position:fixed;bottom:100px;left:10px;right:10px;display:flex;gap:6px;z-index:15';document.body.appendChild(qDiv);
-setInterval(spawn,1500);upd();draw();
-document.getElementById('play').onclick=()=>{S.playing=true;document.getElementById('menu').style.display='none';canvas.onclick=e=>{let r=canvas.getBoundingClientRect();let x=(e.clientX-r.left)*2,y=(e.clientY-r.top)*2;shelves.forEach(s=>{if(x>=s.x&&x<=s.x+s.w&&y>=s.y&&y<=s.y+s.h&&s.k!=='z'&&S.money>=5000){S.money-=5000;S.shelves[s.k]=100;document.getElementById('money').textContent=S.money;}});};setInterval(()=>{if(S.queue.length>0){let c=S.queue.shift();S.money+=10000;S.cust++;document.getElementById('money').textContent=S.money;document.getElementById('cust').textContent=S.cust;qDiv.innerHTML='';S.queue.forEach(o=>{let d=document.createElement('div');d.style.cssText='background:#fff;border:3px solid #000;border-radius:12px;padding:4px 8px';d.textContent=o.i;qDiv.appendChild(d);});}},1200);};
-</script></body></html>￼Enter
+});
+// kasir counter HD
+let cx=W/2+6, cy=450, cw=W/2-20, ch=90;
+ctx.fillStyle='rgba(0,0,0,0.18)';ctx.beginPath();ctx.roundRect(cx+5,cy+5,cw,ch,14);ctx.fill();
+ctx.fillStyle='#fff';ctx.strokeStyle='#000';ctx.lineWidth=3.5;ctx.beginPath();ctx.roundRect(cx,cy,cw,ch,14);ctx.fill();ctx.stroke();
+ctx.fillStyle='#ffeb3b';ctx.beginPath();ctx.roundRect(cx,cy,cw,30,14);ctx.fill();ctx.fillRect(cx,cy+15,cw,15);ctx.strokeStyle='#000';ctx.beginPath();ctx.roundRect(cx,cy,cw,30,14);ctx.stroke();
+ctx.fillStyle='#000';ctx.font='700 12px Fredoka';ctx.textAlign='center';ctx.fillText('💻 KASIR UNICORN SULTAN',cx+cw/2,cy+20);
+ctx.font='28px Arial';ctx.fillText('🖥️🦄💵',cx+cw/2,cy+62);
+}
+
+let lastSpawn=0;
+function loop(t){
+if(!S.playing)return;
+requestAnimationFrame(loop);
+if(t-lastSpawn>1400){spawn();lastSpawn=t;}
+draw();
+}
+function spawn(){
+if(customers.length>=7)return;
+let icons=['🧕','👨‍🦱','👩‍🎓','👶','🦄','👩‍👧','👳‍♂️'];
+let wants=['uni','drink','kelapa','snack'];
+customers.push({x:40+Math.random()*(innerWidth-80),y:innerHeight+20,tx:30+Math.random()*(innerWidth-60),ty:300+Math.random()*140,icon:icons[Math.floor(Math.random()*icons.length)],want:wants[Math.floor(Math.random()*wants.length)],cart:[]});
+}
+
+function renderQueue(){
+let q=document.getElementById('queue');q.innerHTML='';
+S.queue.forEach((c,i)=>{
+let d=document.createElement('div');d.className='q'+(S.sel===i?' active':'');
+d.innerHTML=`<div>${c.icon}</div><div style="font-size:9px;font-weight:900">${c.cart.length} item</div>`;
+d.onclick=()=>selectCust(i);q.appendChild(d);
+});
+}
+function selectCust(i){
+S.sel=i;let c=S.queue[i];if(!c)return;
+document.getElementById('cashierUI').style.display='flex';
+let bill=document.getElementById('bill');bill.innerHTML='';let total=0;
+c.cart.forEach(it=>{
+let emoji=it==='uni'?'🦄':it==='drink'?'🥤':it==='kelapa'?'🥥':'🍪';
+let price=it==='kelapa'?15000:it==='snack'?8000:it==='uni'?6000:5000;
+total+=price;
+let el=document.createElement('div');el.style.cssText='background:#fff;border:2.5px solid #000;border-radius:12px;padding:6px 10px;display:flex;gap:6px;align-items:center;box-shadow:3px 3px 0 #000';
+el.innerHTML=`<span style="font-size:20px">${emoji}</span><span style="font-size:10px">Rp${price/1000}k</span>`;
+bill.appendChild(el);
+});
+if(c.cart.length>=3)total=Math.floor(total*0.85);
+document.getElementById('total').textContent=total.toLocaleString('id-ID');
+renderQueue();
+}
+
+document.getElementById('payBtn').onclick=()=>{
+if(S.sel===null)return;
+initAudio();
+for(let i=0;i<6;i++)setTimeout(soundType,i*80);
+setTimeout(soundCash,500);
+let c=S.queue[S.sel];
+S.money+=parseInt(document.getElementById('total').textContent.replace(/\./g,''));
+S.cust++;S.star=Math.min(5,S.star+0.08);
+S.queue.splice(S.sel,1);S.sel=null;
+document.getElementById('cashierUI').style.display='none';
+document.getElementById('money').textContent=S.money.toLocaleString('id-ID');
+document.getElementById('cust').textContent=S.cust;
+document.getElementById('star').textContent=S.star.toFixed(1);
+renderQueue();
+if(S.money>=500000){win();}
+};
+
+document.querySelectorAll('.sbtn').forEach(b=>{
+b.onclick=()=>{
+initAudio();
+let k=b.dataset.k;let price={uni:6000,drink:5000,kelapa:15000,snack:8000}[k];
+if(S.money>=price){S.money-=price;S.stock[k]=100;soundRestock();document.getElementById('money').textContent=S.money.toLocaleString('id-ID');document.getElementById('p'+k.charAt(0).toUpperCase()+k.slice(1)).textContent='100%';}else{beep(200,0.3,'sawtooth',0.4);}
+};
+});
+
+canvas.addEventListener('click',e=>{
+let r=canvas.getBoundingClientRect();let x=(e.clientX-r.left), y=(e.clientY-r.top);
+shelves.forEach(s=>{if(x>=s.x&&x<=s.x+s.w&&y>=s.y&&y<=s.y+s.h){
+let k=s.k;let price=s.price;
+if(S.money>=price){S.money-=price;S.stock[k]=100;initAudio();soundRestock();document.getElementById('money').textContent=S.money.toLocaleString('id-ID');}
+}});
+});
+
+function moveCustomers(){
+if(!S.playing)return;
+customers.forEach((c,i)=>{
+let dx=c.tx-c.x, dy=c.ty-c.y, d=Math.hypot(dx,dy);
+if(d<12){
+if(S.stock[c.want]>8){S.stock[c.want]-=12;c.cart.push(c.want);if(Math.random()<0.5)c.cart.push(['drink','snack'][Math.floor(Math.random()*2)]);
+let stockEl=document.getElementById('p'+c.want.charAt(0).toUpperCase()+c.want.slice(1));
+if(stockEl)stockEl.textContent=Math.floor(S.stock[c.want])+'%';
+S.queue.push(c);customers.splice(i,1);renderQueue();initAudio();soundPop();
+}else{S.star=Math.max(1,S.star-0.15);document.getElementById('star').textContent=S.star.toFixed(1);customers.splice(i,1);if(S.star<=1.5)lose();}
+}else{c.x+=dx*0.025;c.y+=dy*0.025;}
+});
+setTimeout(moveCustomers,16);
+}
+
+function win(){
+S.playing=false;
+document.getElementById('menu').style.display='flex';
+document.getElementById('menu').innerHTML=`<div class="card"><div style="font-size:70px">🏆🦄👑</div><h1 style="font-size:28px">SULTAN UNICORN!</h1><p>Rp ${S.money.toLocaleString('id-ID')}</p><p style="font-size:12px">${S.cust} pelanggan dilayani!</p><p style="font-size:11px;margin:8px 0">Sincoy Mart Unicorn jadi minimarket No.1!</p><button class="btn btn-yellow" onclick="location.reload()">🔁 MAIN LAGI SULTAN</button></div>`;
+beep(600,0.2,'sine',0.5);setTimeout(()=>beep(800,0.2,'sine',0.5),200);setTimeout(()=>beep(1000,0.5,'sine',0.6),400);
+}
+function lose(){
+S.playing=false;
+document.getElementById('menu').style.display='flex';
+document.getElementById('menu').innerHTML=`<div class="card"><div style="font-size:60px">😭💔</div><h1>BANGKRUT!</h1><p>Bintang ${S.star.toFixed(1)} - pelanggan kabur karena rak kosong!</p><button class="btn btn-yellow" onclick="location.reload()">🔁 COBA LAGI</button></div>`;
+}
+
+document.getElementById('playBtn').onclick=()=>{
+initAudio();S.playing=true;document.getElementById('menu').style.display='none';mkShelves();requestAnimationFrame(loop);moveCustomers();draw();
+setInterval(()=>{Object.keys(S.stock).forEach(k=>{if(S.stock[k]>0)S.stock[k]-=0.08;let el=document.getElementById('p'+k.charAt(0).toUpperCase()+k.slice(1));if(el)el.textContent=Math.floor(S.stock[k])+'%';});},100);
+};
+
+draw();
+</script>
+</body>
+</html>
