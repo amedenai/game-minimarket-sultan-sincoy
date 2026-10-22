@@ -3,172 +3,171 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<title>Minimarket Sultan - KASIR SINCOY - SINCOY MART</title>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>SINCOY MART - KASIR SINCOY - DINGIN & SEGAR</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;user-select:none;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:#f5f5f7;font-family:'Fredoka',system-ui;font-weight:700;overflow:hidden;height:100dvh;display:flex;flex-direction:column}
-#top{height:44px;background:#fff;border-bottom:3px solid #000;display:flex;align-items:center;gap:6px;padding:0 8px;z-index:20}
-.topChip{background:#fff;border:2.5px solid #000;border-radius:100px;padding:5px 10px;font-size:11px;box-shadow:0 3px 0 #000;flex:1;display:flex;align-items:center;justify-content:center;gap:4px}
-#main{flex:1;display:flex;overflow:hidden;position:relative}
-#left{flex:0 0 62%;background:url('https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=600') center/cover;position:relative;overflow-y:auto;padding:6px;display:flex;flex-direction:column;gap:6px}
-#left::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.82);z-index:0}
-#left > *{position:relative;z-index:1}
-.banner{background:#d32f2f;color:#fff;font-size:10px;text-align:center;padding:7px;border-radius:10px;border:2.5px solid #000;letter-spacing:0.5px;box-shadow:0 3px 0 #000}
-.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.cat{background:rgba(255,255,255,0.96);border:3px solid #000;border-radius:18px;padding:8px;box-shadow:0 4px 0 #000;display:flex;flex-direction:column;gap:6px}
-.catTitle{font-size:11px;display:flex;align-items:center;gap:4px}
-.item{position:relative;background:#fff;border:2.5px solid #000;border-radius:14px;padding:8px;display:flex;flex-direction:column;align-items:center;aspect-ratio:1;cursor:pointer;box-shadow:0 2px 0 #000}
-.item:active{transform:scale(0.94)}
-.itemIcon{font-size:22px}
-.badge{position:absolute;bottom:-4px;right:-4px;background:#00c853;color:#fff;border:2px solid #000;border-radius:100px;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800}
-.badge.low{background:#ff3d00}
-#right{flex:1;background:#fff;border-left:5px solid #d32f2f;display:flex;flex-direction:column;overflow:hidden}
-#sintaTop{padding:10px;background:linear-gradient(#fff,#fff8e1);border-bottom:3px solid #eee}
-.speech{background:#111;color:#fff;border-radius:16px 16px 4px 16px;padding:10px 12px;font-size:12px;line-height:1.3;position:relative}
-.speech::after{content:'';position:absolute;bottom:-8px;right:20px;width:16px;height:16px;background:#111;clip-path:polygon(0 0,100% 0,0 100%)}
-#sintaAvatar{display:flex;flex-direction:column;align-items:center;margin-top:14px}
-.avatar{width:84px;height:84px;background:linear-gradient(#ffecb3,#ff8f00);border:3px solid #000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:52px;box-shadow:0 4px 0 #000}
-.sintaLabel{background:#fff;border:2.5px solid #d32f2f;border-radius:100px;padding:4px 12px;font-size:11px;color:#b71c1c;margin-top:6px;box-shadow:0 2px 0 #000}
-#kasirBox{background:#f8f9ff;border-top:4px solid #e0e0e0;padding:10px;display:flex;flex-direction:column;gap:8px;flex:1}
-.kasirHeader{background:#fff;border:2.5px solid #000;border-radius:12px;padding:8px;display:flex;align-items:center;gap:8px;box-shadow:0 3px 0 #000}
-.kasirIcon{width:48px;height:36px;background:#d32f2f;border:2px solid #000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff}
-.antriBox{background:#fff;border:2.5px solid #000;border-radius:14px;padding:8px;box-shadow:0 3px 0 #000}
-.antriTitle{display:flex;justify-content:space-between;font-size:10px;margin-bottom:6px}
-.antriList{display:flex;gap:8px;overflow-x:auto;padding:4px 0}
-.antriCust{flex:0 0 52px;display:flex;flex-direction:column;align-items:center;position:relative}
-.antriCust .ic{width:46px;height:46px;background:#fff;border:2.5px solid #000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px}
-.antriCust .cnt{position:absolute;top:-4px;right:2px;background:#ff1744;color:#fff;border:2px solid #000;border-radius:100px;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px}
-#btnKasir{background:#111;color:#fff;border:3px solid #000;border-radius:16px;padding:14px;text-align:center;font-size:13px;box-shadow:0 5px 0 #000;cursor:pointer;line-height:1.2}
-#btnKasir.active{background:#ffeb3b;color:#000}
-#modalKasir{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:50;display:none;align-items:center;justify-content:center;padding:16px}
-#modalBox{background:#fff;border:5px solid #000;border-radius:24px;width:100%;max-width:380px;box-shadow:12px 12px 0 #000;overflow:hidden;display:flex;flex-direction:column;max-height:85vh}
-#menu{position:fixed;inset:0;z-index:100;background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6)),url('https://amedenai.github.io/game-minimarket-sultan-sincoy/logo.png'),radial-gradient(circle at 50% 0%,#ff8f00,#b71c1c);background-size:cover;background-position:center;background-blend-mode:overlay;display:flex;align-items:center;justify-content:center;padding:16px}
-.cardM{background:#fff;border:5px solid #000;border-radius:26px;padding:20px;width:100%;max-width:420px;box-shadow:12px 12px 0 #000;text-align:center}
-.btnM{width:100%;padding:14px;border-radius:100px;border:4px solid #000;font-weight:800;font-size:15px;margin-top:10px;box-shadow:0 5px 0 #000}
+body{margin:0;background:#fff;font-family:'Fredoka',system-ui;font-weight:700;overflow:hidden;height:100dvh;display:flex;flex-direction:column}
+#topBar{height:46px;background:#fff;border-bottom:3px solid #000;display:flex;gap:6px;padding:6px 8px;align-items:center}
+.chip{flex:1;background:#fff;border:2.5px solid #000;border-radius:100px;padding:6px;text-align:center;font-size:11px;box-shadow:0 3px 0 #000}
+#scene{flex:1;position:relative;background:#fff;overflow:hidden;display:flex;flex-direction:column}
+/* Interior Alfamart - Dingin & Segar */
+#bgInterior{position:absolute;inset:0;background:linear-gradient(to bottom,#fff 0%,#fff 38%,#f5f5f5 38%,#fff 100%);z-index:0}
+#fridgeTop{position:absolute;top:0;left:0;right:0;height:38%;background:linear-gradient(#fff,#f0f0f0);border-bottom:4px solid #d32f2f;display:flex;align-items:center;justify-content:center;gap:10px;z-index:1}
+.fridge{width:32%;height:85%;background:#fff;border:3px solid #000;border-radius:8px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 4px 0 #000}
+.fridgeHead{background:#d32f2f;color:#fff;font-size:9px;text-align:center;padding:4px;font-weight:800}
+.fridgeBody{flex:1;background:linear-gradient(90deg,#e3f2fd 0%,#fff 20%,#e8f5e9 40%,#fff3e0 60%,#fce4ec 80%,#e3f2fd 100%);display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;padding:4px}
+#floor{position:absolute;bottom:22%;left:0;right:0;height:42%;background:#fff;background-image:linear-gradient(#e0e0e0 1px,transparent 1px),linear-gradient(90deg,#e0e0e0 1px,transparent 1px);background-size:40px 40px;z-index:0}
+#shelvesArea{position:absolute;top:38%;bottom:22%;left:0;right:0;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px;z-index:2}
+.shelf{background:rgba(255,255,255,0.96);border:3.5px solid #000;border-radius:18px;padding:6px;box-shadow:0 5px 0 #000;display:flex;flex-direction:column}
+.shelfHead{height:26px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;margin:-6px -6px 6px -6px;border:3px solid #000}
+.shelfGrid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:4px;flex:1}
+.sItem{background:#fff;border:2px solid #000;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;aspect-ratio:1;position:relative}
+.sBadge{position:absolute;bottom:-3px;right:-3px;background:#00c853;color:#fff;border:1.5px solid #000;border-radius:100px;width:18px;height:18px;font-size:9px;display:flex;align-items:center;justify-content:center}
+.sBadge.low{background:#ff1744}
+#queueArea{position:absolute;bottom:90px;left:8px;right:8px;height:78px;z-index:5;display:flex;gap:8px;overflow-x:auto;padding:4px}
+.qCard{flex:0 0 72px;background:#fff;border:3px solid #000;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:4px 4px 0 #000;position:relative}
+.qCard.active{background:#ffeb3b;border-color:#d32f2f;transform:translateY(-4px)}
+.qNum{position:absolute;top:-6px;right:-6px;background:#ff1744;color:#fff;border:2px solid #000;border-radius:100px;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px}
+#cashierBar{position:absolute;bottom:0;left:0;right:0;height:86px;background:#3e2723;border-top:4px solid #000;z-index:6;display:flex;align-items:center;padding:0 10px;gap:10px}
+#cashierInfo{display:flex;align-items:center;gap:8px;color:#fff;flex:1}
+#sincoyAvatar{width:54px;height:54px;background:#ffecb3;border:3px solid #000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 3px 0 #000}
+#payBtn{padding:12px 18px;background:#ffeb3b;border:3px solid #000;border-radius:14px;font-weight:800;font-size:13px;box-shadow:0 4px 0 #000}
+#payBtn:active{transform:translateY(3px);box-shadow:0 1px 0 #000}
+#payBtn:disabled{background:#999;color:#555}
+#sound{position:absolute;top:50px;right:8px;z-index:10;background:#fff;border:3px solid #000;border-radius:100px;padding:5px 10px;font-size:11px;box-shadow:0 3px 0 #000}
+#menu{position:fixed;inset:0;z-index:100;background:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.5)),radial-gradient(circle at 50% 0%,#ffcc80,#b71c1c);display:flex;align-items:center;justify-content:center;padding:16px}
+.card{background:#fff;border:5px solid #000;border-radius:26px;padding:20px;width:100%;max-width:400px;box-shadow:12px 12px 0 #000;text-align:center}
+.btn{width:100%;padding:14px;border-radius:100px;border:4px solid #000;font-weight:800;font-size:15px;margin-top:10px;box-shadow:0 5px 0 #000}
 </style>
 </head>
 <body>
-<div id="top">
-<div class="topChip">💰 Rp <span id="money">250.000</span></div>
-<div class="topChip">📅 Hari <span id="day">1</span></div>
-<div class="topChip">🎯 <span id="target">15</span></div>
-<div class="topChip" id="soundBtn">🔊</div>
+<div id="topBar">
+<div class="chip">💰 Rp <span id="money">250.000</span></div>
+<div class="chip">📅 Hari 1</div>
+<div class="chip">⭐ <span id="star">5.0</span></div>
+<div class="chip">🎯 <span id="tgt">15</span></div>
 </div>
-<div id="main">
-<div id="left">
-<div class="banner">🏪 SINCOY MART • DINGIN & SEGAR • RAK PENUH • AC DINGIN • 🦄</div>
-<div class="grid3">
-<div class="cat"><div class="catTitle">📁 Minuman</div>
-<div class="item" data-k="minuman" data-i="0"><span class="itemIcon">💧</span><span class="badge" id="b-m0">8</span></div>
-<div class="item" data-k="minuman" data-i="1"><span class="itemIcon">🍵</span><span class="badge" id="b-m1">7</span></div>
-<div class="item" data-k="minuman" data-i="2"><span class="itemIcon">☕</span><span class="badge" id="b-m2">7</span></div>
-<div class="item" data-k="minuman" data-i="3"><span class="itemIcon">🥛</span><span class="badge" id="b-m3">6</span></div>
-<div class="item" data-k="minuman" data-i="4"><span class="itemIcon">🥤</span><span class="badge" id="b-m4">9</span></div>
-<div class="item" data-k="minuman" data-i="5"><span class="itemIcon">💦</span><span class="badge" id="b-m5">9</span></div>
+<div id="scene">
+<div id="bgInterior"></div>
+<div id="fridgeTop">
+<div class="fridge"><div class="fridgeHead">Dingin & Segar</div><div class="fridgeBody"><div>🥤</div><div>💧</div><div>🧃</div><div>🥛</div><div>🍺</div><div>💦</div></div></div>
+<div class="fridge"><div class="fridgeHead">Dingin & Segar</div><div class="fridgeBody"><div>🍦</div><div>🥤</div><div>💧</div><div>🧃</div><div>🥛</div><div>🍫</div></div></div>
+<div class="fridge"><div class="fridgeHead">Dingin & Segar</div><div class="fridgeBody"><div>💧</div><div>🥤</div><div>🧃</div><div>🥤</div><div>💦</div><div>🍺</div></div></div>
 </div>
-<div class="cat"><div class="catTitle">📁 Snack</div>
-<div class="item" data-k="snack" data-i="0"><span class="itemIcon">🥔</span><span class="badge" id="b-s0">9</span></div>
-<div class="item" data-k="snack" data-i="1"><span class="itemIcon">🍙</span><span class="badge" id="b-s1">7</span></div>
-<div class="item" data-k="snack" data-i="2"><span class="itemIcon">🍫</span><span class="badge" id="b-s2">7</span></div>
-<div class="item" data-k="snack" data-i="3"><span class="itemIcon">🍫</span><span class="badge" id="b-s3">6</span></div>
+<div id="floor"></div>
+<div id="shelvesArea">
+<div class="shelf"><div class="shelfHead" style="background:#7b2cbf">🦄 UNICORN</div><div class="shelfGrid" id="gridUni"></div><div style="height:8px;background:#eee;border:2px solid #000;border-radius:4px;margin-top:6px;overflow:hidden"><div id="barUni" style="height:100%;background:#00e676;width:100%"></div></div></div>
+<div class="shelf"><div class="shelfHead" style="background:#0091ea">🥤 MINUM</div><div class="shelfGrid" id="gridMinum"></div><div style="height:8px;background:#eee;border:2px solid #000;border-radius:4px;margin-top:6px;overflow:hidden"><div id="barMinum" style="height:100%;background:#00e676;width:100%"></div></div></div>
+<div class="shelf"><div class="shelfHead" style="background:#6d4c41">🥥 KELAPA</div><div class="shelfGrid" id="gridKelapa"></div><div style="height:8px;background:#eee;border:2px solid #000;border-radius:4px;margin-top:6px;overflow:hidden"><div id="barKelapa" style="height:100%;background:#00e676;width:100%"></div></div></div>
+<div class="shelf"><div class="shelfHead" style="background:#ef6c00">🍪 SNACK</div><div class="shelfGrid" id="gridSnack"></div><div style="height:8px;background:#eee;border:2px solid #000;border-radius:4px;margin-top:6px;overflow:hidden"><div id="barSnack" style="height:100%;background:#00e676;width:100%"></div></div></div>
 </div>
-<div class="cat"><div class="catTitle">📁 Makanan</div>
-<div class="item" data-k="makanan" data-i="0"><span class="itemIcon">🍜</span><span class="badge" id="b-mk0">7</span></div>
-<div class="item" data-k="makanan" data-i="1"><span class="itemIcon">🍞</span><span class="badge" id="b-mk1">6</span></div>
+<button id="sound">🔊 ON</button>
+<div id="queueArea"></div>
+<div id="cashierBar">
+<div id="cashierInfo">
+<div id="sincoyAvatar">🦄</div>
+<div><div style="font-size:13px;font-weight:800">SINCOY - KASIR</div><div style="font-size:9px;opacity:.8">SINCOY MART • DINGIN & SEGAR</div><div id="scanInfo" style="font-size:9px;color:#ffeb3b">TAP PELANGGAN DI ATAS UNTUK BAYAR</div></div>
 </div>
-</div>
-<div class="grid3">
-<div class="cat"><div class="catTitle">📁 Sembako</div>
-<div class="item" data-k="sembako" data-i="0"><span class="itemIcon">🍚</span><span class="badge" id="b-sb0">6</span></div>
-<div class="item" data-k="sembako" data-i="1"><span class="itemIcon">🫒</span><span class="badge" id="b-sb1">9</span></div>
-<div class="item" data-k="sembako" data-i="2"><span class="itemIcon">🧂</span><span class="badge" id="b-sb2">8</span></div>
-</div>
-<div class="cat"><div class="catTitle">📁 Sabun</div>
-<div class="item" data-k="sabun" data-i="0"><span class="itemIcon">🧼</span><span class="badge" id="b-sa0">9</span></div>
-<div class="item" data-k="sabun" data-i="1"><span class="itemIcon">🧴</span><span class="badge" id="b-sa1">9</span></div>
-<div class="item" data-k="sabun" data-i="2"><span class="itemIcon">🪥</span><span class="badge" id="b-sa2">8</span></div>
-</div>
-<div class="cat"><div class="catTitle">📁 Rokok</div>
-<div class="item" data-k="rokok" data-i="0"><span class="itemIcon">🚬</span><span class="badge" id="b-r0">9</span></div>
-</div>
-</div>
-<div class="grid2">
-<div class="cat"><div class="catTitle">📁 Lain</div><div class="item" data-k="lain" data-i="0"><span class="itemIcon">🧻</span><span class="badge" id="b-l0">6</span></div></div>
-<div class="cat"><div class="catTitle">📁 Digital</div><div class="item" data-k="digital" data-i="0"><span class="itemIcon">📱</span><span class="badge" id="b-d0">6</span></div></div>
-</div>
-</div>
-<div id="right">
-<div id="sintaTop">
-<div class="speech">Hai Tuan! Aku Sincoy! 🦄<br>Kasir Sincoy Mart siap! Tap rak buat restock ya!</div>
-<div id="sintaAvatar"><div class="avatar">🦄</div><div class="sintaLabel">SINCOY - KASIR</div><div style="font-size:10px;margin-top:4px;color:#b71c1c">SINCOY MART • DINGIN & SEGAR</div></div>
-</div>
-<div id="kasirBox">
-<div class="kasirHeader"><div class="kasirIcon">🏪</div><div><div style="font-size:11px;font-weight:800">KASIR 01 • SINCOY MART</div><div style="font-size:8px;opacity:.6">DINGIN & SEGAR • AC DINGIN</div></div></div>
-<div class="antriBox"><div class="antriTitle"><span>ANTRIAN PELANGGAN</span><span id="antriCount">0/15</span></div><div class="antriList" id="antriList"></div></div>
-<div id="btnKasir">🖥️ BUKA MESIN<br>KASIR SINCOY<br><span style="font-size:9px;opacity:.7">Tap pelanggan dulu!</span></div>
-<div style="font-size:9px;text-align:center;opacity:.6">Interior kayak Alfamart Tuan - lorong snack penuh!</div>
-</div>
-</div>
-</div>
-
-<div id="modalKasir">
-<div id="modalBox">
-<div style="background:#b71c1c;color:#fff;padding:10px;display:flex;justify-content:space-between;font-size:11px"><span>🖥️ MESIN KASIR SINCOY • DINGIN & SEGAR</span><span id="modalClose" style="background:#fff;color:#000;border-radius:100px;padding:2px 8px;cursor:pointer">✕</span></div>
-<div style="padding:12px;display:flex;gap:10px">
-<div style="width:70px;text-align:center"><div id="modalCustIcon" style="font-size:40px">🧕</div><div id="modalCustName" style="font-size:10px">PELANGGAN</div></div>
-<div style="flex:1">
-<div id="modalItems" style="display:flex;gap:6px;flex-wrap:wrap;min-height:60px"></div>
-<div style="margin-top:10px;background:#000;color:#0f0;border-radius:12px;padding:10px;text-align:center;font-family:monospace"><div style="font-size:10px">TOTAL BAYAR</div><div id="modalTotal" style="font-size:22px;color:#ffeb3b">Rp 0</div><div id="modalScan" style="font-size:10px;margin-top:4px">SCAN: -</div></div>
-<button id="modalPay" class="btnM" style="background:#ffeb3b">💵 BAYAR - TIK TIK DING! 🔊</button>
-</div>
+<div style="text-align:center">
+<div style="color:#fff;font-size:9px">TOTAL</div>
+<div id="totalTxt" style="color:#ffeb3b;font-size:16px;font-weight:800">Rp 0</div>
+<button id="payBtn" disabled>💵 BAYAR</button>
 </div>
 </div>
 </div>
 
 <div id="menu">
-<div class="cardM">
-<div style="width:100px;height:100px;background:#fff;border:4px solid #000;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:60px">🦄</div>
-<h1 style="font-size:22px;margin-top:10px">SINCOY MART<br><span style="background:#d32f2f;color:#fff;border:3px solid #000;padding:2px 10px;border-radius:12px;font-size:16px">KASIR SINCOY • DINGIN & SEGAR</span></h1>
+<div class="card">
+<div style="width:90px;height:90px;background:#ffecb3;border:4px solid #000;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:56px;box-shadow:6px 6px 0 #000">🦄</div>
+<h1 style="font-size:24px;margin-top:10px">SINCOY MART<br><span style="background:#d32f2f;color:#fff;border:3px solid #000;padding:2px 10px;border-radius:12px;font-size:16px">KASIR SINCOY • DINGIN & SEGAR</span></h1>
 <div style="text-align:left;font-size:11px;margin:12px 0;line-height:1.6">
-✅ <b>Kasir SINCOY</b> - bukan Sinta lagi!<br>
-✅ <b>Interior persis foto Tuan:</b> lorong snack kiri-kanan, lantai putih, kulkas Dingin & Segar di ujung<br>
-✅ <b>8 Kategori</b> rak penuh, badge hijau<br>
-✅ <b>Antrian & Mesin Kasir</b> Sincoy - TIK TIK DING!
+✅ <b>Nama kasir SINCOY</b> (bukan Sinta lagi!)<br>
+✅ <b>Interior kayak foto Tuan:</b> kulkas Dingin & Segar merah di atas, lantai putih kotak-kotak, lorong snack!<br>
+✅ <b>Layout FIX:</b> antrian di atas, kasir di bawah - gak ketutup lagi!<br>
+✅ <b>4 Rak:</b> UNICORN, MINUM, KELAPA, SNACK + bar stok hijau<br>
+✅ <b>Suara TIK TIK DING!</b>
 </div>
-<button class="btnM" style="background:#ffeb3b" id="playBtn">🦄 BUKA TOKO SINCOY!</button>
+<button class="btn" style="background:#ffeb3b" id="play">🦄 BUKA TOKO SINCOY!</button>
 </div>
 </div>
 
 <script>
 let audioCtx,soundOn=true;
 function initA(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();}
-function beep(f,d,t='sine',v=0.35){if(!soundOn||!audioCtx)return;let o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=t;o.frequency.value=f;o.connect(g);g.connect(audioCtx.destination);g.gain.setValueAtTime(v,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+d);o.start();o.stop(audioCtx.currentTime+d);}
-function sType(){beep(1100+Math.random()*400,0.06,'square',0.25);}
-function sCash(){beep(700,0.1,'sine',0.4);setTimeout(()=>beep(1100,0.18,'sine',0.5),90);setTimeout(()=>beep(1600,0.4,'sine',0.5),200);}
-function sRest(){beep(300,0.15,'sawtooth',0.3);setTimeout(()=>beep(600,0.15,'sawtooth',0.3),120);}
-function sPop(){beep(600,0.08,'sine',0.3);setTimeout(()=>beep(900,0.1,'sine',0.3),80);}
+function beep(f,d,t='sine',v=0.32){if(!soundOn||!audioCtx)return;let o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=t;o.frequency.value=f;o.connect(g);g.connect(audioCtx.destination);g.gain.setValueAtTime(v,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+d);o.start();o.stop(audioCtx.currentTime+d);}
+function sType(){beep(1150+Math.random()*400,0.05,'square',0.24);}
+function sCash(){beep(700,0.09,'sine',0.4);setTimeout(()=>beep(1150,0.16,'sine',0.5),80);setTimeout(()=>beep(1650,0.38,'sine',0.5),190);}
+function sRest(){beep(280,0.14,'sawtooth',0.3);setTimeout(()=>beep(580,0.14,'sawtooth',0.3),110);}
+function sPop(){beep(620,0.07,'sine',0.3);setTimeout(()=>beep(920,0.09,'sine',0.3),70);}
 
-let S={money:250000,day:1,queue:[],sel:null,playing:false,
-stock:{minuman:[8,7,7,6,9,9],snack:[9,7,7,6],makanan:[7,6],sembako:[6,9,8],sabun:[9,9,8],rokok:[9],lain:[6],digital:[6]}};
-let prices={minuman:[5000,6000,7000,4000,5500,3000],snack:[8000,9000,12000,13000],makanan:[15000,12000],sembako:[12000,8000,5000],sabun:[6000,15000,8000],rokok:[25000],lain:[10000],digital:[20000]};
-let icons={minuman:['💧','🍵','☕','🥛','🥤','💦'],snack:['🥔','🍙','🍫','🍫'],makanan:['🍜','🍞'],sembako:['🍚','🫒','🧂'],sabun:['🧼','🧴','🪥'],rokok:['🚬'],lain:['🧻'],digital:['📱']};
+let S={money:250000,star:5,stock:{uni:100,minum:100,kelapa:100,snack:100},queue:[],sel:null,playing:false};
+let items={uni:['🦄','🦄','🦄','🦄','🦄','🦄','🦄'],minum:['💧','🥤','🧃','💦','🥛','☕','💧'],kelapa:['🥥','🥥','🥥','🥥','🥥','🥥','🥥'],snack:['🍪','🥔','🍫','🍿','🥜','🍩','🍪']};
+let prices={uni:6000,minum:5000,kelapa:15000,snack:8000};
 
-function updateBadges(){Object.keys(S.stock).forEach(k=>{S.stock[k].forEach((v,i)=>{let id='b-'+(k==='minuman'?'m':k==='snack'?'s':k==='makanan'?'mk':k==='sembako'?'sb':k==='sabun'?'sa':k==='rokok'?'r':k==='lain'?'l':'d')+i;let el=document.getElementById(id);if(el){el.textContent=v;el.className='badge'+(v<=3?' low':'');}});});}
-function renderQueue(){let list=document.getElementById('antriList');list.innerHTML='';S.queue.forEach((c,i)=>{let d=document.createElement('div');d.className='antriCust';d.innerHTML=`<div class="ic">${c.icon}</div><div class="cnt">${c.cart.length}</div><div style="font-size:8px;margin-top:2px">${c.cart.length} brg</div>`;d.onclick=()=>selectCust(i);if(S.sel===i)d.querySelector('.ic').style.background='#ffeb3b';list.appendChild(d);});document.getElementById('antriCount').textContent=S.queue.length+'/15';}
-let selCustData=null;
-function selectCust(i){S.sel=i;selCustData=S.queue[i];document.getElementById('btnKasir').classList.add('active');renderQueue();initA();sPop();}
-document.getElementById('btnKasir').onclick=()=>{if(S.sel===null){alert('Tap pelanggan di antrian dulu Tuan!');return;}openModal();};
-function openModal(){if(!selCustData)return;let modal=document.getElementById('modalKasir');modal.style.display='flex';document.getElementById('modalCustIcon').textContent=selCustData.icon;document.getElementById('modalCustName').textContent='PELANGGAN '+(S.sel+1);let box=document.getElementById('modalItems');box.innerHTML='';let tot=0;selCustData.cart.forEach((ci,idx)=>{let em=icons[ci.k][ci.i];let pr=prices[ci.k][ci.i];tot+=pr;let el=document.createElement('div');el.style.cssText='background:#fff;border:2px solid #000;border-radius:10px;padding:4px 8px;display:flex;gap:4px;align-items:center;box-shadow:2px 2px 0 #000;font-size:11px';el.innerHTML=`<span>${em}</span> Rp${pr/1000}k`;box.appendChild(el);setTimeout(()=>{initA();sType();document.getElementById('modalScan').textContent='SCAN: '+em+' TIK!';},idx*120);});document.getElementById('modalTotal').textContent='Rp '+tot.toLocaleString('id-ID');}
-document.getElementById('modalClose').onclick=()=>{document.getElementById('modalKasir').style.display='none';};
-document.getElementById('modalPay').onclick=()=>{initA();for(let i=0;i<6;i++)setTimeout(sType,i*60);setTimeout(sCash,400);let tot=parseInt(document.getElementById('modalTotal').textContent.replace(/[^0-9]/g,''));S.money+=tot;S.queue.splice(S.sel,1);S.sel=null;selCustData=null;document.getElementById('money').textContent=S.money.toLocaleString('id-ID');document.getElementById('modalKasir').style.display='none';document.getElementById('btnKasir').classList.remove('active');renderQueue();};
-document.querySelectorAll('.item').forEach(el=>{el.onclick=()=>{initA();let k=el.dataset.k,i=parseInt(el.dataset.i);let price=prices[k][i];if(S.money>=price){S.money-=price;S.stock[k][i]=Math.min(15,S.stock[k][i]+4);sRest();document.getElementById('money').textContent=S.money.toLocaleString('id-ID');updateBadges();}};});
-function spawnCust(){if(!S.playing||S.queue.length>=15)return;let iconsList=['🧕','👩‍🎓','👶','👨‍🦱','👳‍♀️','👩‍👧'];let icon=iconsList[Math.floor(Math.random()*iconsList.length)];let cart=[];let num=1+Math.floor(Math.random()*4);for(let j=0;j<num;j++){let cats=Object.keys(S.stock);let k=cats[Math.floor(Math.random()*cats.length)];let idx=Math.floor(Math.random()*S.stock[k].length);if(S.stock[k][idx]>0){S.stock[k][idx]--;cart.push({k:k,i:idx});}}if(cart.length>0){S.queue.push({icon:icon,cart:cart});renderQueue();updateBadges();sPop();}}
-setInterval(()=>{if(S.playing)spawnCust();},2200);
-document.getElementById('soundBtn').onclick=function(){soundOn=!soundOn;this.textContent=soundOn?'🔊':'🔇';if(soundOn){initA();sPop();}};
-document.getElementById('playBtn').onclick=()=>{initA();S.playing=true;document.getElementById('menu').style.display='none';updateBadges();renderQueue();};
-updateBadges();renderQueue();
+function renderShelves(){
+['uni','minum','kelapa','snack'].forEach(k=>{
+let grid=document.getElementById('grid'+k.charAt(0).toUpperCase()+k.slice(1));
+grid.innerHTML='';let count=Math.floor(S.stock[k]/14);
+for(let i=0;i<7;i++){
+let d=document.createElement('div');d.className='sItem';
+d.innerHTML=(i<count?items[k][i]:'')+`<span class="sBadge${S.stock[k]<30?' low':''}" style="display:${i<count?'flex':'none'}">${Math.floor(S.stock[k]/7)}</span>`;
+d.onclick=()=>restock(k);grid.appendChild(d);
+}
+document.getElementById('bar'+k.charAt(0).toUpperCase()+k.slice(1)).style.width=S.stock[k]+'%';
+document.getElementById('bar'+k.charAt(0).toUpperCase()+k.slice(1)).style.background=S.stock[k]<30?'#ff1744':S.stock[k]<60?'#ff9100':'#00e676';
+});
+}
+function restock(k){
+initA();if(S.money>=prices[k]){S.money-=prices[k];S.stock[k]=100;sRest();document.getElementById('money').textContent=S.money.toLocaleString('id-ID');renderShelves();}
+}
+function renderQueue(){
+let area=document.getElementById('queueArea');area.innerHTML='';
+S.queue.forEach((c,i)=>{
+let d=document.createElement('div');d.className='qCard'+(S.sel===i?' active':'');
+d.innerHTML=`<div style="font-size:26px">${c.icon}</div><div style="font-size:8px">${c.cart.length} barang</div><div class="qNum">${c.cart.length}</div>`;
+d.onclick=()=>sel(i);area.appendChild(d);
+});
+}
+function sel(i){
+S.sel=i;let c=S.queue[i];if(!c)return;initA();sPop();
+document.getElementById('scanInfo').textContent=`SINCOY SCAN: ${c.cart.length} barang`;
+let tot=0;c.cart.forEach(it=>{tot+=prices[it];});
+if(c.cart.length>=3)tot=Math.floor(tot*0.85);
+document.getElementById('totalTxt').textContent='Rp '+tot.toLocaleString('id-ID');
+document.getElementById('payBtn').disabled=false;
+renderQueue();
+}
+document.getElementById('payBtn').onclick=()=>{
+if(S.sel===null)return;initA();for(let j=0;j<6;j++)setTimeout(sType,j*55);setTimeout(sCash,380);
+let c=S.queue[S.sel];let tot=0;c.cart.forEach(it=>{tot+=prices[it];});if(c.cart.length>=3)tot=Math.floor(tot*0.85);
+S.money+=tot;S.star=Math.min(5,S.star+0.08);
+S.queue.splice(S.sel,1);S.sel=null;
+document.getElementById('money').textContent=S.money.toLocaleString('id-ID');
+document.getElementById('star').textContent=S.star.toFixed(1);
+document.getElementById('totalTxt').textContent='Rp 0';
+document.getElementById('scanInfo').textContent='TAP PELANGGAN DI ATAS UNTUK BAYAR';
+document.getElementById('payBtn').disabled=true;
+renderQueue();
+if(S.money>=500000){alert('🏆 SULTAN SINCOY! Rp '+S.money.toLocaleString('id-ID'));S.playing=false;document.getElementById('menu').style.display='flex';}
+};
+
+function spawn(){
+if(!S.playing||S.queue.length>=6)return;
+let icons=['🧕','👩‍🎓','👶','👨‍🦱','👳‍♀️','👩‍👧'];
+let icon=icons[Math.floor(Math.random()*icons.length)];
+let want=['uni','minum','kelapa','snack'][Math.floor(Math.random()*4)];
+if(S.stock[want]>12){S.stock[want]-=10+Math.random()*8;let cart=[];let n=1+Math.floor(Math.random()*3);for(let k=0;k<n;k++)cart.push(want);
+if(Math.random()<0.4)cart.push(['minum','snack'][Math.floor(Math.random()*2)]);
+S.queue.push({icon:icon,cart:cart});renderQueue();renderShelves();initA();sPop();}
+}
+setInterval(()=>{if(S.playing)spawn();},1800);
+setInterval(()=>{if(S.playing){Object.keys(S.stock).forEach(k=>{if(S.stock[k]>0)S.stock[k]-=0.04;});renderShelves();}},100);
+
+document.getElementById('sound').onclick=function(){soundOn=!soundOn;this.textContent=soundOn?'🔊 ON':'🔇 OFF';if(soundOn){initA();sPop();}};
+document.getElementById('play').onclick=()=>{initA();S.playing=true;document.getElementById('menu').style.display='none';renderShelves();renderQueue();};
+renderShelves();renderQueue();
 </script>
 </body>
 </html>
