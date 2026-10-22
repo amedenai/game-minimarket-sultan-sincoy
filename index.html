@@ -3,160 +3,142 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<meta http-equiv="Cache-Control" content="no-cache">
-<title>SINCOY MART - KASIR MANUAL SINCOY - AI REAL</title>
+<title>POS KASIR - RUANGAN KASIR - SINCOY MART</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;user-select:none;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:#f0f0f0;font-family:'Fredoka',system-ui;font-weight:700;overflow:hidden;height:100dvh;display:flex;flex-direction:column}
-#top{height:44px;background:#fff;border-bottom:3px solid #000;display:flex;gap:6px;padding:6px 8px;align-items:center}
-.chip{flex:1;background:#fff;border:2.5px solid #000;border-radius:100px;padding:6px;text-align:center;font-size:11px;box-shadow:0 3px 0 #000}
-#main{flex:1;display:flex;overflow:hidden}
-#left{flex:0 0 60%;background:#fff;overflow-y:auto;padding:6px;display:flex;flex-direction:column;gap:6px;border-right:4px solid #000}
-.banner{background:#b71c1c;color:#fff;font-size:10px;text-align:center;padding:7px;border-radius:10px;border:2.5px solid #000}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.cat{background:#fff;border:3px solid #000;border-radius:16px;padding:8px;box-shadow:0 4px 0 #000}
-.catT{font-size:11px;margin-bottom:6px;display:flex;justify-content:space-between}
+body{margin:0;background:#0f172a;font-family:'Fredoka',system-ui;font-weight:700;overflow:hidden;height:100dvh;display:flex;flex-direction:column;color:#fff}
+#mainGame{flex:1;background:#f1f5f9;display:flex;overflow:hidden;position:relative}
+#leftShop{flex:0 0 62%;background:#fff;overflow-y:auto;padding:6px;display:flex;flex-direction:column;gap:6px;border-right:3px solid #000}
+.banner{background:#b71c1c;color:#fff;font-size:10px;text-align:center;padding:6px;border-radius:8px;border:2px solid #000}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.cat{background:#fff;border:3px solid #000;border-radius:14px;padding:6px;box-shadow:0 3px 0 #000}
 .items{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:4px}
-.it{position:relative;background:#fff;border:2px solid #000;border-radius:12px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;box-shadow:0 2px 0 #000}
-.it:active{transform:scale(0.92)}
-.bdg{position:absolute;bottom:-4px;right:-4px;background:#00c853;color:#fff;border:2px solid #000;border-radius:100px;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px}
-.bdg.low{background:#ff1744}
-#right{flex:1;background:#fff;display:flex;flex-direction:column;overflow:hidden}
-#rightTop{height:42%;background:linear-gradient(#fff8e1,#fff);padding:8px;border-bottom:3px solid #000;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
-#rightTop::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=400') center/cover;opacity:0.15}
-#rightTop>*{position:relative;z-index:1}
-.speech{background:#111;color:#fff;border-radius:14px 14px 4px 14px;padding:8px 12px;font-size:11px;text-align:center}
-.avatarSincoy{width:72px;height:72px;background:#fff;border:3px solid #000;border-radius:50%;margin-top:8px;display:flex;align-items:center;justify-content:center;font-size:40px;box-shadow:0 4px 0 #000;overflow:hidden}
-.labelSincoy{background:#b71c1c;color:#fff;border:2px solid #000;border-radius:100px;padding:3px 10px;font-size:10px;margin-top:6px}
-#queueBox{flex:1;padding:8px;background:#f5f5f5;overflow-y:auto}
-.qTitle{font-size:10px;display:flex;justify-content:space-between;margin-bottom:6px}
-.qList{display:flex;gap:8px;flex-wrap:wrap}
-.qCard{width:64px;height:70px;background:#fff;border:3px solid #000;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:3px 3px 0 #000;position:relative}
-.qCard.active{background:#ffeb3b;border-color:#b71c1c}
-.qNum{position:absolute;top:-6px;right:-6px;background:#ff1744;color:#fff;border:2px solid #000;border-radius:100px;width:18px;height:18px;display:flex;align-items:center;justify-content:center;font-size:9px}
-#openCash{margin:8px;background:#111;color:#fff;border:3px solid #000;border-radius:14px;padding:12px;text-align:center;font-size:12px;box-shadow:0 4px 0 #000}
-#openCash.active{background:#ffeb3b;color:#000}
-#modal{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:50;display:none;align-items:center;justify-content:center;padding:10px}
-#modalBox{background:#fff;border:5px solid #000;border-radius:20px;width:100%;max-width:400px;max-height:92vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:12px 12px 0 #000}
-#posTop{background:#111;color:#0f0;padding:8px;display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:11px}
-#posBody{display:flex;gap:8px;padding:10px;flex:1;overflow:hidden}
-#posLeft{width:110px;display:flex;flex-direction:column;gap:6px}
-#posItems{flex:1;background:#f9f9f9;border:3px solid #000;border-radius:12px;padding:6px;overflow-y:auto}
-.posItem{display:flex;justify-content:space-between;background:#fff;border:2px solid #000;border-radius:8px;padding:4px 6px;margin-bottom:4px;font-size:11px}
-#posRight{flex:1;display:flex;flex-direction:column;gap:6px}
-#display{height:64px;background:#000;border:3px solid #000;border-radius:12px;padding:8px;color:#0f0;font-family:'JetBrains Mono',monospace;display:flex;flex-direction:column;justify-content:center}
-#display small{font-size:9px;color:#0a0}
-#display #typed{font-size:22px;color:#ffeb3b}
-#display.wrong{background:#400;color:#ff6b6b}
-#display.correct{background:#003b00;color:#00ff00}
-#keypad{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
-.key{background:#fff;border:3px solid #000;border-radius:12px;padding:14px;text-align:center;font-size:18px;font-weight:800;box-shadow:0 4px 0 #000}
-.key:active{transform:translateY(3px);box-shadow:0 1px 0 #000}
-.key.clear{background:#ffccbc}
-.key.enter{background:#ffeb3b;grid-column:span 3}
-#payManual{padding:14px;background:#111;color:#fff;border:3px solid #000;border-radius:14px;text-align:center;font-weight:800;box-shadow:0 4px 0 #000}
-#payManual.enabled{background:#00c853;color:#fff}
-#payManual.enabled:active{transform:translateY(3px);box-shadow:0 1px 0 #000}
-#menu{position:fixed;inset:0;z-index:100;background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.6)),url('https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=800') center/cover;display:flex;align-items:center;justify-content:center;padding:16px}
-.cardM{background:#fff;border:5px solid #000;border-radius:24px;padding:20px;width:100%;max-width:400px;box-shadow:12px 12px 0 #000;text-align:center}
+.it{background:#fff;border:2px solid #000;border-radius:10px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:18px;position:relative}
+.badge{position:absolute;bottom:-4px;right:-4px;background:#00c853;color:#fff;border:1.5px solid #000;border-radius:100px;width:18px;height:18px;font-size:9px;display:flex;align-items:center;justify-content:center}
+#rightShop{flex:1;background:#fff;display:flex;flex-direction:column}
+#queueArea{background:#f8fafc;padding:8px;flex:1;overflow-y:auto}
+.qCard{width:62px;height:68px;background:#fff;border:3px solid #000;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:3px 3px 0 #000;position:relative;margin:4px;display:inline-flex}
+.qCard.active{background:#ffeb3b}
+.qNum{position:absolute;top:-6px;right:-6px;background:#ff1744;color:#fff;border:2px solid #000;border-radius:100px;width:18px;height:18px;font-size:9px;display:flex;align-items:center;justify-content:center}
+#openPos{margin:8px;background:#111;color:#fff;border:3px solid #000;border-radius:12px;padding:12px;text-align:center;box-shadow:0 4px 0 #000}
+#topGame{height:40px;background:#fff;border-bottom:3px solid #000;display:flex;gap:6px;padding:6px 8px}
+.chip{flex:1;background:#fff;border:2px solid #000;border-radius:100px;padding:4px;text-align:center;font-size:10px;color:#000;box-shadow:0 2px 0 #000}
+
+/* POS KASIR - PERSIS SCREENSHOT */
+#posModal{position:fixed;inset:0;background:#0f172a;z-index:50;display:flex;flex-direction:column;overflow:hidden}
+#posHeader{height:44px;background:#0f172a;border-bottom:2px solid #1e293b;display:flex;align-items:center;gap:8px;padding:0 12px;font-size:13px;font-weight:800}
+#posToggles{display:flex;gap:8px;padding:8px;background:#0f172a}
+.toggle{flex:1;background:#22c55e;border:none;border-radius:12px;padding:10px;text-align:center;font-size:11px;font-weight:800;color:#fff;box-shadow:0 3px 0 #065f46}
+.toggle.off{background:#334155}
+#itemCard{background:#0f172a;border:2px solid #1e293b;border-radius:16px;margin:8px;padding:12px}
+.itemRow{display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:13px}
+.itemRow .name{color:#5eead4;display:flex;gap:6px}
+.itemRow .price{color:#5eead4}
+.totalRow{display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding-top:8px;border-top:1px dashed #334155}
+.totalRow b{font-size:18px}
+#calcCard{background:#0f172a;border:2px solid #1e293b;border-radius:16px;margin:0 8px;padding:10px}
+.calcGrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;font-size:10px;color:#94a3b8}
+.calcGrid b{display:block;font-size:14px;color:#fff;margin-top:2px}
+.calcGrid .kembali b{color:#facc15}
+#inputBox{margin-top:8px;background:#020617;border:3px solid #facc15;border-radius:14px;height:52px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:800;color:#fff}
+#keypadArea{flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:10px;background:#0f172a;align-content:start}
+.keyBtn{background:#fff;border:none;border-radius:18px;height:62px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#0f172a;box-shadow:0 4px 0 #cbd5e1}
+.keyBtn:active{transform:translateY(3px);box-shadow:0 1px 0 #cbd5e1}
+.keyBtn.hapus{background:#ef4444;color:#fff;box-shadow:0 4px 0 #991b1b;font-size:16px;gap:6px}
+.keyBtn.bayar{background:#22c55e;color:#fff;box-shadow:0 4px 0 #065f46;font-size:14px;line-height:1.1}
+.keyBtn.bayar:disabled{background:#334155;box-shadow:none;opacity:0.6}
+#menu{position:fixed;inset:0;z-index:100;background:#0f172a;display:flex;align-items:center;justify-content:center;padding:16px}
+.cardM{background:#fff;border:4px solid #000;border-radius:20px;padding:18px;width:100%;max-width:380px;color:#000;text-align:center;box-shadow:10px 10px 0 #000}
 </style>
 </head>
 <body>
-<div id="top">
-<div class="chip">💰 Rp <span id="money">250.000</span></div>
-<div class="chip">⭐ <span id="star">5.0</span></div>
-<div class="chip">🎯 <span id="target">15</span></div>
-<div class="chip" id="sound">🔊</div>
+
+<div id="mainGame" style="display:none">
+<div id="topGame"><div class="chip">💰 Rp <span id="money">250.000</span></div><div class="chip">⭐ <span id="star">5.0</span></div><div class="chip" id="soundBtn">🔊</div></div>
+<div style="display:flex;flex:1;overflow:hidden">
+<div id="leftShop">
+<div class="banner">🏪 SINCOY MART • KASIR SINCOY • DINGIN & SEGAR</div>
+<div class="grid">
+<div class="cat"><div style="font-size:10px">🦄 UNICORN Rp6k</div><div class="items" id="gUni"></div></div>
+<div class="cat"><div style="font-size:10px">🥤 MINUM Rp5k</div><div class="items" id="gMinum"></div></div>
+<div class="cat"><div style="font-size:10px">🥥 KELAPA Rp15k</div><div class="items" id="gKelapa"></div></div>
+<div class="cat"><div style="font-size:10px">🍪 SNACK Rp8k</div><div class="items" id="gSnack"></div></div>
 </div>
-<div id="main">
-<div id="left">
-<div class="banner">🏪 SINCOY MART • DINGIN & SEGAR • KASIR MANUAL • AI REAL</div>
-<div class="grid2">
-<div class="cat"><div class="catT"><span>🦄 UNICORN</span><span>Rp6k</span></div><div class="items" id="gUni"></div></div>
-<div class="cat"><div class="catT"><span>🥤 MINUM</span><span>Rp5k</span></div><div class="items" id="gMinum"></div></div>
-<div class="cat"><div class="catT"><span>🥥 KELAPA</span><span>Rp15k</span></div><div class="items" id="gKelapa"></div></div>
-<div class="cat"><div class="catT"><span>🍪 SNACK</span><span>Rp8k</span></div><div class="items" id="gSnack"></div></div>
 </div>
-<div style="font-size:9px;text-align:center;opacity:.5;margin-top:6px">Tap rak untuk restock • Interior Alfamart Dingin & Segar</div>
+<div id="rightShop">
+<div id="queueArea"><div style="font-size:10px;color:#000;display:flex;justify-content:space-between"><span>ANTRIAN PELANGGAN</span><span id="qCount">0/15</span></div><div id="qList"></div></div>
+<div id="openPos">🖥️ BUKA MESIN KASIR SINCOY<br><span style="font-size:9px">Tap pelanggan dulu!</span></div>
 </div>
-<div id="right">
-<div id="rightTop">
-<div class="speech">Hai Tuan! Aku Sincoy! 🦄<br>Mesin kasir manual - ketik jumlah sendiri ya!</div>
-<div class="avatarSincoy">🦄</div>
-<div class="labelSincoy">SINCOY - KASIR • 22 TH</div>
-<div style="font-size:8px;margin-top:4px">SINCOY MART • BUKA 24 JAM</div>
-</div>
-<div id="queueBox">
-<div class="qTitle"><span>ANTRIAN PELANGGAN</span><span id="qCount">0/15</span></div>
-<div class="qList" id="qList"></div>
-</div>
-<div id="openCash">🖥️ BUKA MESIN KASIR MANUAL SINCOY<br><span style="font-size:9px">Tap pelanggan dulu, lalu ketik total!</span></div>
 </div>
 </div>
 
-<div id="modal">
-<div id="modalBox">
-<div id="posTop"><span>🖥️ POS SINCOY MART - MANUAL</span><span id="closeModal" style="background:#fff;color:#000;border-radius:100px;padding:2px 8px">✕</span></div>
-<div id="posBody">
-<div id="posLeft">
-<div style="text-align:center"><div id="mCust" style="font-size:36px">🧕</div><div id="mName" style="font-size:10px">PELANGGAN</div></div>
-<div id="posItems"></div>
-<div style="background:#000;color:#0f0;border-radius:10px;padding:6px;font-family:'JetBrains Mono',monospace;font-size:9px">TOTAL SEBENARNYA:<br><span id="realTotal" style="color:#ffeb3b;font-size:14px">Rp 0</span><br><span style="font-size:8px;color:#888">Ketik di mesin kanan!</span></div>
+<!-- POS KASIR PERSIS SCREENSHOT TUAN -->
+<div id="posModal">
+<div id="posHeader"><span>🖥️ POS KASIR - RUANGAN KASIR</span><span style="margin-left:auto;background:#1e293b;border-radius:100px;width:28px;height:28px;display:flex;align-items:center;justify-content:center" id="closePos">✕</span></div>
+<div id="posToggles">
+<button class="toggle" id="toggleKetik">🔊 Suara Ketik ON</button>
+<button class="toggle" id="toggleMusik">🎵 Musik Toko ON</button>
 </div>
-<div id="posRight">
-<div id="display"><small>JUMLAH DIKETIK:</small><div id="typed">Rp 0</div><small id="status">KETIK TOTAL BELANJA!</small></div>
-<div id="keypad">
-<div class="key" data-k="7">7</div><div class="key" data-k="8">8</div><div class="key" data-k="9">9</div>
-<div class="key" data-k="4">4</div><div class="key" data-k="5">5</div><div class="key" data-k="6">6</div>
-<div class="key" data-k="1">1</div><div class="key" data-k="2">2</div><div class="key" data-k="3">3</div>
-<div class="key" data-k="0">0</div><div class="key" data-k="00">00</div><div class="key clear" data-k="C">C</div>
-<div class="key enter" data-k="ENTER">ENTER ✅</div>
+<div id="itemCard">
+<div id="posItemsList"></div>
+<div class="totalRow"><b id="posTotalBarang">TOTAL 0 barang</b><b id="posTotalRp">Rp 0</b></div>
 </div>
-<div id="payManual">🔒 KETIK JUMLAH DULU</div>
+<div id="calcCard">
+<div class="calcGrid">
+<div><span>TOTAL</span><b id="cTotal">Rp 0</b></div>
+<div><span>BAYAR</span><b id="cBayar">Rp 0</b></div>
+<div class="kembali"><span>KEMBALIAN</span><b id="cKembali">Rp 0</b></div>
 </div>
+<div style="font-size:10px;color:#94a3b8;margin-top:6px">UANG PELANGGAN: <b id="cUangPel" style="color:#fff">Rp 0</b></div>
+<div id="inputBox">0</div>
 </div>
+<div id="keypadArea">
+<button class="keyBtn" data-k="1">1</button><button class="keyBtn" data-k="2">2</button><button class="keyBtn" data-k="3">3</button>
+<button class="keyBtn" data-k="4">4</button><button class="keyBtn" data-k="5">5</button><button class="keyBtn" data-k="6">6</button>
+<button class="keyBtn" data-k="7">7</button><button class="keyBtn" data-k="8">8</button><button class="keyBtn" data-k="9">9</button>
+<button class="keyBtn hapus" data-k="HAPUS">⌫ HAPUS</button><button class="keyBtn" data-k="0">0</button><button class="keyBtn bayar" data-k="BAYAR" id="btnBayar">✅<br>BAYAR</button>
 </div>
 </div>
 
 <div id="menu">
 <div class="cardM">
-<div style="width:90px;height:90px;background:#ffecb3;border:4px solid #000;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:56px">🦄</div>
-<h1 style="font-size:20px;margin-top:10px">SINCOY MART<br><span style="background:#b71c1c;color:#fff;border:3px solid #000;padding:2px 10px;border-radius:12px;font-size:14px">KASIR MANUAL • AI REAL</span></h1>
-<div style="text-align:left;font-size:11px;margin:12px 0;line-height:1.6">
-✅ <b>Kasir Sincoy AI Real</b> - kayak foto kasir Alfamart nyata!<br>
-✅ <b>Mesin kasir MANUAL:</b> gak otomatis - Tuan harus ketik jumlah sendiri pakai keypad!<br>
-✅ <b>Keypad TIK TIK:</b> suara ketikan, display hitam hijau, lampu benar/salah<br>
-✅ <b>Interior:</b> Dingin & Segar, lantai putih, rak penuh
+<div style="width:80px;height:80px;background:#ffecb3;border:3px solid #000;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:44px">🦄</div>
+<h1 style="font-size:18px;margin-top:8px">POS KASIR - RUANGAN KASIR<br><span style="background:#b71c1c;color:#fff;padding:2px 8px;border-radius:8px;font-size:12px">SINCOY - KASIR MANUAL</span></h1>
+<div style="text-align:left;font-size:11px;margin:10px 0;line-height:1.5">
+✅ <b>Persis screenshot Tuan:</b> POS KASIR - RUANGAN KASIR<br>
+✅ Tombol hijau Suara Ketik ON & Musik Toko ON<br>
+✅ List barang Tissue Paseo Rp 8.500, TOTAL barang<br>
+✅ TOTAL, BAYAR, KEMBALIAN, UANG PELANGGAN<br>
+✅ Input kuning 0, keypad 1-9, HAPUS merah, BAYAR hijau
 </div>
-<button class="btn" style="background:#ffeb3b;padding:14px;border-radius:100px;border:4px solid #000;font-weight:800;box-shadow:0 5px 0 #000" id="play">🦄 BUKA TOKO MANUAL SINCOY!</button>
+<button style="width:100%;padding:14px;background:#ffeb3b;border:4px solid #000;border-radius:100px;font-weight:800;box-shadow:0 5px 0 #000" id="play">🦄 BUKA TOKO SINCOY!</button>
 </div>
 </div>
 
 <script>
-let audioCtx,soundOn=true;
+let audioCtx,soundOn=true,musikOn=true;
 function initA(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();}
 function beep(f,d,t='sine',v=0.32){if(!soundOn||!audioCtx)return;let o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=t;o.frequency.value=f;o.connect(g);g.connect(audioCtx.destination);g.gain.setValueAtTime(v,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+d);o.start();o.stop(audioCtx.currentTime+d);}
-function sType(){beep(1200,0.05,'square',0.28);}
-function sEnter(){beep(800,0.08,'sine',0.4);setTimeout(()=>beep(1200,0.12,'sine',0.4),80);}
-function sError(){beep(180,0.3,'sawtooth',0.4);}
-function sCash(){beep(700,0.1,'sine',0.4);setTimeout(()=>beep(1100,0.18,'sine',0.5),90);setTimeout(()=>beep(1650,0.4,'sine',0.5),200);}
-function sRest(){beep(300,0.14,'sawtooth',0.3);setTimeout(()=>beep(600,0.14,'sawtooth',0.3),110);}
-function sPop(){beep(600,0.07,'sine',0.3);}
+function sKetik(){beep(1100+Math.random()*300,0.06,'square',0.28);}
+function sBayar(){beep(700,0.1,'sine',0.4);setTimeout(()=>beep(1200,0.15,'sine',0.5),90);setTimeout(()=>beep(1700,0.35,'sine',0.5),200);}
+function sHapus(){beep(200,0.15,'sawtooth',0.35);}
+function sError(){beep(150,0.4,'sawtooth',0.4);}
 
-let S={money:250000,star:5,stock:{uni:100,minum:100,kelapa:100,snack:100},queue:[],sel:null,playing:false,typed:'',expected:0};
+let S={money:250000,star:5,stock:{uni:100,minum:100,kelapa:100,snack:100},queue:[],sel:null,playing:false,typed:'',total:0};
 
-let items={uni:['🦄','🦄','🦄','🦄','🦄','🦄'],minum:['💧','🥤','🧃','💦','🥛','☕'],kelapa:['🥥','🥥','🥥','🥥','🥥','🥥'],snack:['🍪','🥔','🍫','🍿','🥜','🍩']};
-let prices={uni:6000,minum:5000,kelapa:15000,snack:8000};
+let items={uni:['🦄'],minum:['💧'],kelapa:['🥥'],snack:['🍪','Tissue Paseo']};
+let prices={uni:6000,minum:5000,kelapa:15000,snack:8500};
 
 function renderShelves(){
 ['uni','minum','kelapa','snack'].forEach(k=>{
 let grid=document.getElementById('g'+k.charAt(0).toUpperCase()+k.slice(1));
-grid.innerHTML='';let cnt=Math.floor(S.stock[k]/17);
-for(let i=0;i<6;i++){
+grid.innerHTML='';
+let cnt=Math.floor(S.stock[k]/20);
+for(let i=0;i<4;i++){
 let d=document.createElement('div');d.className='it';
-d.innerHTML=(i<cnt?items[k][i]:'')+`<span class="bdg${S.stock[k]<30?' low':''}" style="display:${i<cnt?'flex':'none'}">${Math.floor(S.stock[k]/6)}</span>`;
-d.onclick=()=>{initA();if(S.money>=prices[k]){S.money-=prices[k];S.stock[k]=100;sRest();document.getElementById('money').textContent=S.money.toLocaleString('id-ID');renderShelves();}};
+d.innerHTML=(i<cnt?(k==='snack'&&i===0?'🧻':items[k][0]):'')+`<span class="badge">${Math.floor(S.stock[k]/6)}</span>`;
+d.onclick=()=>{if(S.money>=prices[k]){S.money-=prices[k];S.stock[k]=100;initA();sKetik();document.getElementById('money').textContent=S.money.toLocaleString('id-ID');renderShelves();}};
 grid.appendChild(d);
 }
 });
@@ -165,76 +147,100 @@ function renderQ(){
 let list=document.getElementById('qList');list.innerHTML='';
 S.queue.forEach((c,i)=>{
 let d=document.createElement('div');d.className='qCard'+(S.sel===i?' active':'');
-d.innerHTML=`<div style="font-size:24px">${c.icon}</div><div style="font-size:8px">${c.cart.length} brg</div><div class="qNum">${c.cart.length}</div>`;
-d.onclick=()=>select(i);list.appendChild(d);
+d.innerHTML=`<div style="font-size:22px">${c.icon}</div><div style="font-size:8px;color:#000">${c.cart.length} brg</div><div class="qNum">${c.cart.length}</div>`;
+d.onclick=()=>{S.sel=i;document.getElementById('openPos').style.background='#ffeb3b';document.getElementById('openPos').style.color='#000';document.getElementById('openPos').innerHTML='✅ PELANGGAN '+ (i+1) +' DIPILIH - TAP UNTUK BUKA POS!';renderQ();initA();sKetik();};
+list.appendChild(d);
 });
 document.getElementById('qCount').textContent=S.queue.length+'/15';
 }
-function select(i){
-S.sel=i;initA();sPop();
-document.getElementById('openCash').classList.add('active');
-document.getElementById('openCash').innerHTML=`✅ PELANGGAN ${i+1} DIPILIH - BUKA MESIN MANUAL!`;
-renderQ();
-}
-document.getElementById('openCash').onclick=()=>{
+document.getElementById('openPos').onclick=()=>{
 if(S.sel===null){alert('Tap pelanggan di antrian dulu Tuan!');return;}
-openManual();
+openPos();
 };
-function openManual(){
-let c=S.queue[S.sel];if(!c)return;
-document.getElementById('modal').style.display='flex';
-document.getElementById('mCust').textContent=c.icon;
-document.getElementById('mName').textContent='PELANGGAN '+(S.sel+1);
-let box=document.getElementById('posItems');box.innerHTML='';let tot=0;
-c.cart.forEach(it=>{let pr=prices[it];tot+=pr;let el=document.createElement('div');el.className='posItem';el.innerHTML=`<span>${it==='uni'?'🦄':it==='minum'?'🥤':it==='kelapa'?'🥥':'🍪'} ${it.toUpperCase()}</span><span>Rp${pr.toLocaleString('id-ID')}</span>`;box.appendChild(el);});
+
+let currentCust=null;
+function openPos(){
+let c=S.queue[S.sel];if(!c)return;currentCust=c;
+document.getElementById('mainGame').style.display='none';
+document.getElementById('posModal').style.display='flex';
+document.getElementById('menu').style.display='none';
+let list=document.getElementById('posItemsList');list.innerHTML='';
+let tot=0;
+c.cart.forEach((it,idx)=>{
+let name=it==='snack'&&idx===0?'Tissue Paseo':it==='uni'?'Unicorn':it==='minum'?'Minuman':'Kelapa';
+let pr=it==='snack'?8500:prices[it];
+tot+=pr;
+let row=document.createElement('div');row.className='itemRow';
+row.innerHTML=`<div class="name">🧻 ${name}</div><div class="price">Rp ${pr.toLocaleString('id-ID')}</div>`;
+list.appendChild(row);
+});
 if(c.cart.length>=3)tot=Math.floor(tot*0.85);
-S.expected=tot;S.typed='';
-document.getElementById('realTotal').textContent='Rp '+tot.toLocaleString('id-ID');
-document.getElementById('typed').textContent='Rp 0';
-document.getElementById('display').className='';
-document.getElementById('status').textContent='KETIK TOTAL BELANJA!';
-document.getElementById('payManual').textContent='🔒 KETIK JUMLAH DULU';
-document.getElementById('payManual').className='';
+S.total=tot;S.typed='';
+document.getElementById('posTotalBarang').textContent=`TOTAL ${c.cart.length} barang`;
+document.getElementById('posTotalRp').textContent=`Rp ${tot.toLocaleString('id-ID')}`;
+document.getElementById('cTotal').textContent=`Rp ${tot.toLocaleString('id-ID')}`;
+document.getElementById('cUangPel').textContent=`Rp ${tot.toLocaleString('id-ID')}`;
+document.getElementById('cBayar').textContent=`Rp 0`;
+document.getElementById('cKembali').textContent=`Rp 0`;
+document.getElementById('inputBox').textContent='0';
+document.getElementById('btnBayar').disabled=true;
 }
-function updateDisplay(){
+
+function updateInput(){
 let val=S.typed===''?'0':S.typed;
-document.getElementById('typed').textContent='Rp '+parseInt(val||0).toLocaleString('id-ID');
 let num=parseInt(val||0);
-let display=document.getElementById('display');
-let status=document.getElementById('status');
-let pay=document.getElementById('payManual');
-if(num===0){display.className='';status.textContent='KETIK TOTAL BELANJA!';pay.textContent='🔒 KETIK JUMLAH DULU';pay.className='';}
-else if(num===S.expected){display.className='correct';status.textContent='✅ BENAR! TEKAN BAYAR!';pay.textContent='💵 BAYAR - TIK TIK DING!';pay.className='enabled';sEnter();}
-else{let diff=Math.abs(num-S.expected);if(diff<1000){display.className='';status.textContent='HAMPIR BENAR!';pay.className='';}else{display.className='wrong';status.textContent='❌ SALAH! CEK LAGI!';pay.className='';}}
+document.getElementById('inputBox').textContent=num.toLocaleString('id-ID');
+document.getElementById('cBayar').textContent=`Rp ${num.toLocaleString('id-ID')}`;
+let kembali=num-S.total;
+document.getElementById('cKembali').textContent=`Rp ${Math.max(0,kembali).toLocaleString('id-ID')}`;
+let btn=document.getElementById('btnBayar');
+if(num>=S.total&&S.total>0){btn.disabled=false;btn.style.background='#22c55e';}else{btn.disabled=true;btn.style.background='#334155';}
 }
-document.querySelectorAll('.key').forEach(k=>{
-k.onclick=()=>{
-initA();sType();
-let v=k.dataset.k;
-if(v==='C'){S.typed='';}
-else if(v==='ENTER'){if(parseInt(S.typed||0)===S.expected){doPay();}else{sError();}}
-else{if(S.typed.length<7){if(v==='00'){S.typed+=(S.typed===''?'':'00');}else{S.typed+=v;}}}
-updateDisplay();
+
+document.querySelectorAll('.keyBtn').forEach(b=>{
+b.onclick=()=>{
+initA();
+let k=b.dataset.k;
+if(k==='HAPUS'){S.typed=S.typed.slice(0,-1);sHapus();}
+else if(k==='BAYAR'){
+if(parseInt(S.typed||0)>=S.total){doBayar();}
+else{sError();alert('Uang kurang Tuan! Total Rp '+S.total.toLocaleString('id-ID')); return;}
+}
+else{
+if(S.typed.length<8){S.typed+=k;}
+sKetik();
+}
+updateInput();
 };
 });
-function doPay(){
-if(parseInt(S.typed||0)!==S.expected){sError();return;}
-for(let i=0;i<6;i++)setTimeout(sType,i*50);setTimeout(sCash,350);
-S.money+=S.expected;S.queue.splice(S.sel,1);S.sel=null;
+
+function doBayar(){
+for(let i=0;i<5;i++)setTimeout(sKetik,i*60);setTimeout(sBayar,300);
+S.money+=S.total;S.queue.splice(S.sel,1);S.sel=null;
 document.getElementById('money').textContent=S.money.toLocaleString('id-ID');
-document.getElementById('modal').style.display='none';
-document.getElementById('openCash').classList.remove('active');
-document.getElementById('openCash').innerHTML=`🖥️ BUKA MESIN KASIR MANUAL SINCOY<br><span style="font-size:9px">Tap pelanggan dulu, lalu ketik total!</span>`;
+document.getElementById('posModal').style.display='none';
+document.getElementById('mainGame').style.display='flex';
+document.getElementById('openPos').style.background='#111';document.getElementById('openPos').style.color='#fff';
+document.getElementById('openPos').innerHTML=`🖥️ BUKA MESIN KASIR SINCOY<br><span style="font-size:9px">Tap pelanggan dulu!</span>`;
 renderQ();
-if(S.money>=500000){alert('🏆 SULTAN SINCOY! Rp '+S.money.toLocaleString('id-ID'));S.money=250000;document.getElementById('money').textContent=S.money.toLocaleString('id-ID');}
 }
-document.getElementById('closeModal').onclick=()=>{document.getElementById('modal').style.display='none';};
-function spawn(){if(!S.playing||S.queue.length>=8)return;let icons=['🧕','👩‍🎓','👶','👨‍🦱','👳‍♀️','👩‍👧'];let icon=icons[Math.floor(Math.random()*icons.length)];let want=['uni','minum','kelapa','snack'][Math.floor(Math.random()*4)];if(S.stock[want]>10){S.stock[want]-=10+Math.random()*8;let cart=[];let n=1+Math.floor(Math.random()*3);for(let k=0;k<n;k++)cart.push(want);S.queue.push({icon:icon,cart:cart});renderQ();renderShelves();sPop();}}
+
+document.getElementById('closePos').onclick=()=>{
+document.getElementById('posModal').style.display='none';
+document.getElementById('mainGame').style.display='flex';
+};
+
+function spawn(){if(!S.playing||S.queue.length>=8)return;let icons=['🧕','👩‍🎓','👶','👨‍🦱'];let icon=icons[Math.floor(Math.random()*icons.length)];let want=['uni','minum','kelapa','snack'][Math.floor(Math.random()*4)];if(S.stock[want]>10){S.stock[want]-=15;let cart=[];let n=1+Math.floor(Math.random()*2);for(let k=0;k<n;k++)cart.push(want);if(want==='snack')cart[0]='snack';S.queue.push({icon:icon,cart:cart});renderQ();renderShelves();}}
 setInterval(()=>{if(S.playing)spawn();},2000);
 setInterval(()=>{if(S.playing){Object.keys(S.stock).forEach(k=>{if(S.stock[k]>0)S.stock[k]-=0.03;});renderShelves();}},100);
-document.getElementById('sound').onclick=function(){soundOn=!soundOn;this.textContent=soundOn?'🔊':'🔇';if(soundOn){initA();sPop();}};
-document.getElementById('play').onclick=()=>{initA();S.playing=true;document.getElementById('menu').style.display='none';renderShelves();renderQ();};
+
+document.getElementById('toggleKetik').onclick=function(){soundOn=!soundOn;this.textContent=soundOn?'🔊 Suara Ketik ON':'🔇 Suara Ketik OFF';this.classList.toggle('off',!soundOn);if(soundOn){initA();sKetik();}};
+document.getElementById('toggleMusik').onclick=function(){musikOn=!musikOn;this.textContent=musikOn?'🎵 Musik Toko ON':'🎵 Musik Toko OFF';this.classList.toggle('off',!musikOn);};
+document.getElementById('soundBtn').onclick=function(){soundOn=!soundOn;this.textContent=soundOn?'🔊':'🔇';};
+document.getElementById('play').onclick=()=>{initA();S.playing=true;document.getElementById('menu').style.display='none';document.getElementById('mainGame').style.display='flex';renderShelves();renderQ();};
+
 renderShelves();renderQ();
+document.getElementById('posModal').style.display='none';
 </script>
 </body>
 </html>
