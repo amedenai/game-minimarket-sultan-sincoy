@@ -2,56 +2,56 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>SINCOY MART ULTIMATE - KASIR FULL</title>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;800&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>SINCOY MART FIX - KASIR GAK KETUTUP</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;user-select:none;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:#87CEEB;overflow:hidden;font-family:'Fredoka',system-ui;font-weight:700;touch-action:none}
-#c{position:fixed;inset:0;width:100vw;height:100vh}
+body{margin:0;background:#87CEEB;overflow:hidden;font-family:'Fredoka',system-ui;font-weight:700;touch-action:none;height:100dvh}
+#c{position:fixed;inset:0;width:100vw;height:100dvh}
 #hud{position:fixed;top:8px;left:8px;right:8px;display:flex;gap:6px;z-index:30}
-.h{flex:1;background:#fff;border:3.5px solid #000;border-radius:100px;padding:9px 4px;text-align:center;font-size:11px;box-shadow:0 5px 0 #000}
-#cashierArea{position:fixed;bottom:0;left:0;right:0;height:168px;background:linear-gradient(#fff 0%,#f5f5f5 100%);border-top:5px solid #000;z-index:20;display:none;flex-direction:column;box-shadow:0 -12px 30px rgba(0,0,0,.25)}
-#cashierTop{height:32px;background:#222;display:flex;align-items:center;padding:0 12px;gap:8px;color:#0f0;font-family:monospace;font-size:11px}
-#cashierMid{display:flex;flex:1;padding:8px;gap:8px}
-#custSlot{width:86px;background:#fff;border:3px solid #000;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:4px 4px 0 #000}
-#itemsCon{flex:1;background:#fff;border:3px solid #000;border-radius:16px;padding:6px;display:flex;gap:6px;flex-wrap:wrap;align-content:flex-start;overflow-y:auto}
-.itemCard{background:#fff;border:2.5px solid #000;border-radius:12px;padding:5px 8px;display:flex;gap:5px;align-items:center;box-shadow:2px 2px 0 #000;font-size:11px;animation:pop .3s}
-@keyframes pop{0%{transform:scale(0)}100%{transform:scale(1)}}
-#payCol{width:110px;display:flex;flex-direction:column;gap:6px}
-#queue{position:fixed;bottom:176px;left:8px;right:8px;display:flex;gap:8px;z-index:21;overflow-x:auto;padding:4px 2px}
-.qCust{flex:0 0 76px;height:86px;background:#fff;border:3.5px solid #000;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:5px 5px 0 #000;position:relative}
-.qCust.active{border-color:#7b2cbf;background:#ffeb3b;transform:translateY(-4px)}
-.qNum{position:absolute;top:-8px;right:-8px;background:#ff1744;color:#fff;border:2px solid #000;border-radius:100px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:11px}
-#restockBar{position:fixed;bottom:8px;left:8px;right:8px;display:flex;gap:6px;z-index:30}
-.rb{flex:1;background:#fff;border:3px solid #000;border-radius:14px;padding:7px 2px;text-align:center;font-size:9px;box-shadow:0 4px 0 #000}
+.h{flex:1;background:#fff;border:3px solid #000;border-radius:100px;padding:8px 2px;text-align:center;font-size:11px;box-shadow:0 4px 0 #000}
+#queue{position:fixed;left:8px;right:8px;z-index:21;display:flex;gap:8px;overflow-x:auto;padding:4px;transition:bottom .3s}
+.qCust{flex:0 0 72px;height:82px;background:#fff;border:3.5px solid #000;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:4px 4px 0 #000;position:relative}
+.qCust.active{border-color:#7b2cbf;background:#ffeb3b;transform:translateY(-3px)}
+.qNum{position:absolute;top:-7px;right:-7px;background:#ff1744;color:#fff;border:2px solid #000;border-radius:100px;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px}
+#cashierArea{position:fixed;left:0;right:0;z-index:22;background:#fff;border-top:5px solid #000;display:none;flex-direction:column;box-shadow:0 -12px 30px rgba(0,0,0,.3)}
+#cashTop{height:30px;background:#111;display:flex;align-items:center;padding:0 10px;color:#0f0;font-family:monospace;font-size:11px;gap:8px}
+#cashMid{flex:1;display:flex;gap:6px;padding:8px;overflow:hidden}
+#custBox{width:78px;background:#fff;border:3px solid #000;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:3px 3px 0 #000}
+#itemsBox{flex:1;background:#f8f8f8;border:3px solid #000;border-radius:14px;padding:6px;display:flex;gap:6px;flex-wrap:wrap;align-content:flex-start;overflow-y:auto;min-height:60px}
+.itemC{background:#fff;border:2.5px solid #000;border-radius:10px;padding:4px 8px;display:flex;align-items:center;gap:4px;box-shadow:2px 2px 0 #000;font-size:11px}
+#payBox{width:108px;display:flex;flex-direction:column;gap:6px}
+#restockBar{position:fixed;left:0;right:0;bottom:0;height:76px;background:#fff;border-top:4px solid #000;display:flex;gap:5px;padding:6px 6px calc(6px + env(safe-area-inset-bottom));z-index:23;box-shadow:0 -6px 20px rgba(0,0,0,.15)}
+.rb{flex:1;background:#fff;border:2.5px solid #000;border-radius:12px;text-align:center;font-size:8px;padding:4px 1px;box-shadow:0 3px 0 #000}
 .rb b{font-size:14px;display:block}
-#menu{position:fixed;inset:0;z-index:100;background:radial-gradient(circle at 50% 0%,#a0e8ff,#7b2cbf 60%,#2a0a4a);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;overflow-y:auto}
-.card{background:#fff;border:5px solid #000;border-radius:26px;padding:18px;width:100%;max-width:420px;box-shadow:12px 12px 0 #000;text-align:center}
-.btn{width:100%;padding:14px;border-radius:100px;border:4px solid #000;font-weight:800;font-size:15px;margin-top:10px;box-shadow:0 6px 0 #000}
-.btn:active{transform:translateY(4px);box-shadow:0 2px 0 #000}
-#sound{position:fixed;top:58px;right:8px;z-index:31;background:#fff;border:3px solid #000;border-radius:100px;padding:6px 12px;font-size:11px;box-shadow:0 3px 0 #000}
+.rb:active{transform:translateY(2px);box-shadow:0 1px 0 #000}
+#sound{position:fixed;top:54px;right:8px;z-index:31;background:#fff;border:3px solid #000;border-radius:100px;padding:5px 10px;font-size:11px;box-shadow:0 3px 0 #000}
+#menu{position:fixed;inset:0;z-index:100;background:radial-gradient(circle at 50% 0%,#a0e8ff,#7b2cbf 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px}
+.card{background:#fff;border:5px solid #000;border-radius:24px;padding:18px;width:100%;max-width:420px;box-shadow:12px 12px 0 #000;text-align:center}
+.btn{width:100%;padding:13px;border-radius:100px;border:4px solid #000;font-weight:800;font-size:14px;margin-top:8px;box-shadow:0 5px 0 #000}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 #000}
 </style>
 </head>
 <body>
 <canvas id="c"></canvas>
 <div id="hud">
-<div class="h">💰 Rp<span id="m">80.000</span></div>
+<div class="h">💰<span id="m">80.000</span></div>
 <div class="h">🧍<span id="cc">0</span></div>
 <div class="h">⭐<span id="st">5.0</span></div>
-<div class="h">🎯 Rp<span id="target">500k</span></div>
+<div class="h">🎯500k</div>
 </div>
 <button id="sound">🔊 ON</button>
 <div id="queue"></div>
 <div id="cashierArea">
-<div id="cashierTop"><span>🖥️ KASIR SINCOY MART</span><span style="margin-left:auto">💳 SCAN: <span id="scanTxt">-</span></span><span id="machineLight" style="width:14px;height:14px;background:#0f0;border-radius:50%;box-shadow:0 0 8px #0f0"></span></div>
-<div id="cashierMid">
-<div id="custSlot"><div id="custIcon" style="font-size:38px">🧕</div><div id="custName" style="font-size:9px">PELANGGAN</div><div id="custWant" style="font-size:8px;background:#ffeb3b;border:2px solid #000;border-radius:100px;padding:2px 6px;margin-top:2px">Belanja</div></div>
-<div id="itemsCon"></div>
-<div id="payCol">
-<div style="background:#000;color:#0f0;font-family:monospace;border-radius:10px;padding:8px;text-align:center;font-size:12px">TOTAL<br><span id="total" style="font-size:18px;color:#ffeb3b">Rp 0</span></div>
-<button class="btn" style="background:#ffeb3b;margin:0;padding:10px;font-size:13px" id="payBtn">💵 TIK TIK BAYAR! 🔊</button>
-<div style="font-size:8px;text-align:center">Suara: ketikan + ding kasir</div>
+<div id="cashTop"><span>🖥️ KASIR SINCOY MART</span><span style="margin-left:auto" id="scan">SCAN: -</span><span id="lamp" style="width:12px;height:12px;background:#0f0;border-radius:50%;box-shadow:0 0 6px #0f0"></span></div>
+<div id="cashMid">
+<div id="custBox"><div id="cIcon" style="font-size:32px">🧕</div><div id="cName" style="font-size:8px">PELANGGAN</div><div id="cWant" style="font-size:7px;background:#ffeb3b;border:1.5px solid #000;border-radius:100px;padding:1px 5px;margin-top:2px">-</div></div>
+<div id="itemsBox"></div>
+<div id="payBox">
+<div style="background:#000;color:#0f0;border-radius:10px;padding:6px;text-align:center;font-family:monospace"><div style="font-size:9px">TOTAL</div><div id="total" style="color:#ffeb3b;font-size:16px;font-weight:800">Rp 0</div></div>
+<button id="payBtn" class="btn" style="background:#ffeb3b;margin:0;padding:10px 4px;font-size:12px;box-shadow:0 4px 0 #000">💵 BAYAR<br>TIK TIK DING!</button>
+<button id="closeCash" class="btn" style="background:#fff;margin:0;padding:6px;font-size:10px">✕ TUTUP</button>
 </div>
 </div>
 </div>
@@ -63,124 +63,98 @@ body{margin:0;background:#87CEEB;overflow:hidden;font-family:'Fredoka',system-ui
 </div>
 
 <div id="menu">
-<div style="width:100px;height:100px;background:#fff;border:4px solid #000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:56px;box-shadow:8px 8px 0 #000;margin-bottom:10px">🦄</div>
-<h1 style="color:#fff;text-shadow:5px 5px 0 #000;font-size:30px;line-height:.9;text-align:center">SINCOY MART<br><span style="background:#ffeb3b;color:#000;border:3px solid #000;padding:2px 14px;border-radius:14px;font-size:22px">ULTIMATE HD</span></h1>
-<div class="card" style="margin-top:12px">
-<div style="text-align:left;font-size:12px;line-height:1.6">
-<b style="color:#7b2cbf">🔥 LENGKAP KAYAK MINIMARKET ASLI:</b><br>
-✅ <b>MEJA KASIR FULL:</b> Meja kasir panjang, mesin kasir, komputer, lampu scan hijau, kasir Sincoy 👩‍💼<br>
-✅ <b>PELANGGAN LENGKAP:</b> Jalan dari pintu, pilih rak, ambil barang, antri di kasir (max 6)<br>
-✅ <b>KASIR INTERAKTIF:</b> Tap pelanggan di antrian → barang masuk conveyor → scan TIK TIK → DING! → uang masuk<br>
-✅ <b>RAK 4 FULL:</b> Unicorn, Minum, Kelapa, Snack - masing2 8 barang HD + bar stok<br>
-✅ <b>SUARA LENGKAP:</b> Ketikan keyboard kasir, ding kasir, restock, pelanggan masuk<br>
-✅ <b>MENU:</b> Main, Pause, Menang (500k), Kalah
+<div style="width:90px;height:90px;background:#fff;border:4px solid #000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:50px;box-shadow:6px 6px 0 #000">🦄</div>
+<h1 style="color:#fff;text-shadow:4px 4px 0 #000;font-size:28px;text-align:center;line-height:.9;margin-top:8px">SINCOY MART<br><span style="background:#ffeb3b;color:#000;border:3px solid #000;padding:2px 12px;border-radius:12px;font-size:20px">FIX ULTIMATE</span></h1>
+<div class="card" style="margin-top:10px">
+<div style="text-align:left;font-size:11px;line-height:1.5">
+<b>🔧 FIX TOMBOL KETUTUP:</b><br>
+✅ Tombol kasir sekarang di atas, gak ketutup nav HP<br>
+✅ Restock bar di bawah sendiri, ada safe-area<br>
+✅ Kalau kasir buka, restock auto sembunyi biar gak numpuk<br>
+✅ Antrian di atas kasir, gak ketutup<br>
+✅ Meja kasir lengkap: kasir 👩‍💼, mesin 🖥️, scan, total
 </div>
-<button class="btn" style="background:#ffeb3b" id="play">🦄 BUKA MINIMARKET ULTIMATE!</button>
-<button class="btn" style="background:#fff" onclick="alert('CARA MAIN LENGKAP:\n\n1. Pelanggan masuk dari bawah\n2. Mereka jalan ke rak (unicorn/minum/kelapa/snack)\n3. Kalau rak ada stok, mereka ambil 1-3 barang\n4. Kalau kosong, mereka sedih & bintang turun\n5. Abis ambil, mereka ANTRI di baris kasir (atas meja kasir)\n6. TAP pelanggan di antrian buat layani di meja kasir\n7. Di meja kasir: lihat barang di conveyor, tap BAYAR\n8. Denger suara TIK TIK TIK DING! Uang masuk!\n9. Tap RAK di bawah buat restock (bayar)\n10. Target Rp 500.000 jadi SULTAN!\n\nSuara bisa ON/OFF pojok kanan!')">📖 CARA MAIN LENGKAP</button>
+<button class="btn" style="background:#ffeb3b" id="play">🦄 BUKA TOKO FIX!</button>
 </div>
 </div>
 
 <script>
-let audioCtx, soundOn=true;
-function initA(){if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();}
+let audioCtx,soundOn=true;
+function initA(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();}
 function beep(f,d,t='sine',v=0.35){if(!soundOn||!audioCtx)return;let o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=t;o.frequency.value=f;o.connect(g);g.connect(audioCtx.destination);g.gain.setValueAtTime(v,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+d);o.start();o.stop(audioCtx.currentTime+d);}
-function sType(){beep(1100+Math.random()*500,0.07,'square',0.28);if(Math.random()<0.5)setTimeout(()=>beep(800,0.04,'square',0.18),30);}
-function sCash(){beep(700,0.12,'sine',0.4);setTimeout(()=>beep(1100,0.2,'sine',0.5),90);setTimeout(()=>beep(1600,0.45,'sine',0.5),210);}
-function sRest(){beep(280,0.18,'sawtooth',0.3);setTimeout(()=>beep(550,0.18,'sawtooth',0.3),130);}
-function sPop(){beep(600,0.09,'sine',0.3);setTimeout(()=>beep(900,0.1,'sine',0.3),80);}
-function sSad(){beep(200,0.4,'sawtooth',0.3);}
+function sType(){beep(1100+Math.random()*400,0.06,'square',0.26);}
+function sCash(){beep(700,0.1,'sine',0.4);setTimeout(()=>beep(1100,0.18,'sine',0.5),90);setTimeout(()=>beep(1600,0.4,'sine',0.5),200);}
+function sRest(){beep(280,0.15,'sawtooth',0.3);setTimeout(()=>beep(550,0.15,'sawtooth',0.3),120);}
+function sPop(){beep(600,0.08,'sine',0.3);}
 
-let canvas=document.getElementById('c'), ctx=canvas.getContext('2d'), DPR=Math.min(2,devicePixelRatio||1);
-function rs(){canvas.width=innerWidth*DPR;canvas.height=innerHeight*DPR;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';ctx.setTransform(DPR,0,0,DPR,0,0);}rs();addEventListener('resize',rs);
+let canvas=document.getElementById('c'),ctx=canvas.getContext('2d'),DPR=Math.min(2,devicePixelRatio||1);
+function rs(){canvas.width=innerWidth*DPR;canvas.height=innerHeight*DPR;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';ctx.setTransform(DPR,0,0,DPR,0,0);}rs();addEventListener('resize',()=>{rs();layout();});
 
 let S={money:80000,cust:0,star:5,playing:false,stock:{uni:100,drink:100,kelapa:100,snack:100},queue:[],sel:null};
-let customers=[], shelves=[], cashier={x:0,y:0}, t=0;
+let customers=[],shelves=[],t=0;
 
 function mkSh(){
 let W=innerWidth;
 shelves=[
-{x:10,y:96,w:W/2-14,h:150,k:'uni',n:'🦄 UNICORN',c:'#7b2cbf',p:6000},
-{x:W/2+4,y:96,w:W/2-14,h:150,k:'drink',n:'🥤 MINUM',c:'#0091ea',p:5000},
-{x:10,y:256,w:W/2-14,h:150,k:'kelapa',n:'🥥 KELAPA',c:'#6d4c41',p:15000},
-{x:W/2+4,y:256,w:W/2-14,h:150,k:'snack',n:'🍪 SNACK',c:'#ef6c00',p:8000},
+{x:8,y:90,w:W/2-12,h:140,k:'uni',n:'🦄 UNICORN',c:'#7b2cbf',p:6000},
+{x:W/2+4,y:90,w:W/2-12,h:140,k:'drink',n:'🥤 MINUM',c:'#0091ea',p:5000},
+{x:8,y:238,w:W/2-12,h:140,k:'kelapa',n:'🥥 KELAPA',c:'#6d4c41',p:15000},
+{x:W/2+4,y:238,w:W/2-12,h:140,k:'snack',n:'🍪 SNACK',c:'#ef6c00',p:8000},
 ];
-cashier={x:W/2-80,y:420,w:160,h:70};
 }
 mkSh();
 
+function layout(){
+let restH=76;
+let cashH=S.queue.length>0||document.getElementById('cashierArea').style.display==='flex'?180:0;
+let qBottom=restH+cashH+8;
+document.getElementById('queue').style.bottom=qBottom+'px';
+document.getElementById('cashierArea').style.bottom=restH+'px';
+document.getElementById('cashierArea').style.height=cashH+'px';
+document.getElementById('restockBar').style.display=cashH>0?'none':'flex';
+}
+layout();
+
 function draw(){
-let W=innerWidth,H=innerHeight;
-t+=0.016;
-// bg
-let g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#b3e5fc');g.addColorStop(0.5,'#81d4fa');g.addColorStop(1,'#e1f5fe');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
-// clouds
-ctx.fillStyle='rgba(255,255,255,0.95)';
-for(let i=0;i<6;i++){let x=(i*211+t*12)%(W+80)-40, y=66+i%3*12;ctx.beginPath();ctx.arc(x,y,16,0,6.28);ctx.arc(x+20,y+3,20,0,6.28);ctx.arc(x+40,y,14,0,6.28);ctx.fill();}
-// floor
-ctx.fillStyle='#ffffff';ctx.fillRect(0,416,W,H-416);
-ctx.strokeStyle='rgba(0,0,0,0.05)';for(let x=0;x<W;x+=36){ctx.beginPath();ctx.moveTo(x,416);ctx.lineTo(x,H);ctx.stroke();}for(let y=416;y<H;y+=36){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
-// door
-ctx.fillStyle='#fff';ctx.strokeStyle='#000';ctx.lineWidth=3;ctx.beginPath();ctx.roundRect(W/2-36,H-28,72,28,10);ctx.fill();ctx.stroke();ctx.fillStyle='#000';ctx.font='700 10px Fredoka';ctx.textAlign='center';ctx.fillText('🚪 PINTU',W/2,H-10);
-// shelves
+let W=innerWidth,H=innerHeight;t+=0.016;
+let g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#b3e5fc');g.addColorStop(1,'#e1f5fe');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+ctx.fillStyle='rgba(255,255,255,0.9)';for(let i=0;i<5;i++){let x=(i*211+t*10)%(W+60)-30,y=60+i*8;ctx.beginPath();ctx.arc(x,y,14,0,6.28);ctx.arc(x+18,y+3,18,0,6.28);ctx.fill();}
+ctx.fillStyle='#fff';ctx.fillRect(0,386,W,H-386);
+ctx.strokeStyle='rgba(0,0,0,0.04)';for(let x=0;x<W;x+=34){ctx.beginPath();ctx.moveTo(x,386);ctx.lineTo(x,H);ctx.stroke();}for(let y=386;y<H;y+=34){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
 shelves.forEach(s=>{
 let pct=S.stock[s.k]/100;
-ctx.fillStyle='rgba(0,0,0,0.15)';ctx.beginPath();ctx.roundRect(s.x+4,s.y+5,s.w,s.h,12);ctx.fill();
-ctx.fillStyle='#fff';ctx.strokeStyle='#000';ctx.lineWidth=3.2;ctx.beginPath();ctx.roundRect(s.x,s.y,s.w,s.h,12);ctx.fill();ctx.stroke();
-ctx.fillStyle=s.c;ctx.beginPath();ctx.roundRect(s.x,s.y,s.w,28,12);ctx.fill();ctx.fillRect(s.x,s.y+14,s.w,14);ctx.strokeStyle='#000';ctx.beginPath();ctx.roundRect(s.x,s.y,s.w,28,12);ctx.stroke();
-ctx.fillStyle='#fff';ctx.font='800 10px Fredoka';ctx.textAlign='center';ctx.fillText(s.n,s.x+s.w/2,s.y+19);
-for(let i=0;i<8;i++){if(i>=Math.floor(pct*8))continue;let col=i%4,row=Math.floor(i/4), px=s.x+6+col*(s.w-12)/4, py=s.y+36+row*48;
-ctx.fillStyle='rgba(0,0,0,0.06)';ctx.beginPath();ctx.ellipse(px+12,py+22,10,3,0,0,6.28);ctx.fill();
-if(s.k==='uni'){ctx.font='20px Arial';ctx.fillText('🦄',px+12,py+20);}else if(s.k==='drink'){ctx.fillStyle='#e1f5fe';ctx.strokeStyle='#000';ctx.lineWidth=1.8;ctx.beginPath();ctx.roundRect(px+2,py,18,26,6);ctx.fill();ctx.stroke();ctx.fillStyle='#0091ea';ctx.fillRect(px+5,py+6,12,10);}else if(s.k==='kelapa'){ctx.fillStyle='#8d6e63';ctx.beginPath();ctx.arc(px+12,py+10,10,0,6.28);ctx.fill();ctx.strokeStyle='#3e2723';ctx.lineWidth=1.5;ctx.stroke();}else{ctx.fillStyle='#ffcc80';ctx.strokeStyle='#000';ctx.lineWidth=1.8;ctx.beginPath();ctx.roundRect(px,py+2,22,20,5);ctx.fill();ctx.stroke();ctx.fillStyle='#bf360c';ctx.font='700 7px Fredoka';ctx.fillText('SNACK',px+11,py+14);}}
-// bar
-ctx.fillStyle='#eee';ctx.strokeStyle='#000';ctx.lineWidth=2;ctx.beginPath();ctx.roundRect(s.x+6,s.y+s.h-12,s.w-12,7,4);ctx.fill();ctx.stroke();
-ctx.fillStyle=pct<0.3?'#ff1744':pct<0.6?'#ff9100':'#00e676';ctx.beginPath();ctx.roundRect(s.x+6,s.y+s.h-12,(s.w-12)*pct,7,4);ctx.fill();
+ctx.fillStyle='rgba(0,0,0,0.12)';ctx.beginPath();ctx.roundRect(s.x+3,s.y+4,s.w,s.h,12);ctx.fill();
+ctx.fillStyle='#fff';ctx.strokeStyle='#000';ctx.lineWidth=3;ctx.beginPath();ctx.roundRect(s.x,s.y,s.w,s.h,12);ctx.fill();ctx.stroke();
+ctx.fillStyle=s.c;ctx.beginPath();ctx.roundRect(s.x,s.y,s.w,26,12);ctx.fill();ctx.fillRect(s.x,s.y+13,s.w,13);ctx.strokeStyle='#000';ctx.beginPath();ctx.roundRect(s.x,s.y,s.w,26,12);ctx.stroke();
+ctx.fillStyle='#fff';ctx.font='800 10px Fredoka';ctx.textAlign='center';ctx.fillText(s.n,s.x+s.w/2,s.y+18);
+for(let i=0;i<8;i++){if(i>=Math.floor(pct*8))continue;let col=i%4,row=Math.floor(i/4),px=s.x+4+col*(s.w-8)/4,py=s.y+32+row*42;if(s.k==='uni'){ctx.font='18px Arial';ctx.fillText('🦄',px+10,py+16);}else if(s.k==='drink'){ctx.fillStyle='#e1f5fe';ctx.strokeStyle='#000';ctx.lineWidth=1.6;ctx.beginPath();ctx.roundRect(px+2,py,16,22,5);ctx.fill();ctx.stroke();}else if(s.k==='kelapa'){ctx.fillStyle='#8d6e63';ctx.beginPath();ctx.arc(px+10,py+10,8,0,6.28);ctx.fill();}else{ctx.fillStyle='#ffcc80';ctx.strokeStyle='#000';ctx.lineWidth=1.5;ctx.beginPath();ctx.roundRect(px,py+2,18,16,4);ctx.fill();ctx.stroke();}}
+ctx.fillStyle='#eee';ctx.strokeStyle='#000';ctx.lineWidth=1.8;ctx.beginPath();ctx.roundRect(s.x+6,s.y+s.h-10,s.w-12,6,3);ctx.fill();ctx.stroke();
+ctx.fillStyle=pct<0.3?'#ff1744':pct<0.6?'#ff9100':'#00e676';ctx.beginPath();ctx.roundRect(s.x+6,s.y+s.h-10,(s.w-12)*pct,6,3);ctx.fill();
 });
-// cashier desk FULL
-let cx=10, cy=416, cw=W-20, ch=64;
-ctx.fillStyle='rgba(0,0,0,0.2)';ctx.beginPath();ctx.roundRect(cx+5,cy+5,cw,ch,14);ctx.fill();
-ctx.fillStyle='#3e2723';ctx.strokeStyle='#000';ctx.lineWidth=3.5;ctx.beginPath();ctx.roundRect(cx,cy,cw,ch,14);ctx.fill();ctx.stroke();
-ctx.fillStyle='#5d4037';ctx.fillRect(cx,cy,cw,18);
-ctx.fillStyle='#fff';ctx.strokeStyle='#000';ctx.lineWidth=3;ctx.beginPath();ctx.roundRect(cx+8,cy+8,cw-16,12,6);ctx.fill();ctx.stroke();
-ctx.fillStyle='#000';ctx.font='800 11px Fredoka';ctx.textAlign='center';ctx.fillText('💳 MEJA KASIR SINCOY MART ULTIMATE - KASIR 👩‍💼🦄 SCAN BARANG',W/2,cy+16);
-// cashier girl
-ctx.font='38px Arial';ctx.textAlign='center';ctx.fillText('👩‍💼',W/2-90,cy+50);
-ctx.font='28px Arial';ctx.fillText('🖥️',W/2-40,cy+50);ctx.fillText('⌨️',W/2-10,cy+50);ctx.fillText('💵',W/2+20,cy+50);
-ctx.font='22px Arial';ctx.fillText('📠',W/2+55,cy+50);
-// customers
+// meja kasir visual di canvas
+let cx=8,cy=386,cw=W-16,ch=56;
+ctx.fillStyle='rgba(0,0,0,0.15)';ctx.beginPath();ctx.roundRect(cx+4,cy+4,cw,ch,12);ctx.fill();
+ctx.fillStyle='#3e2723';ctx.strokeStyle='#000';ctx.lineWidth=3;ctx.beginPath();ctx.roundRect(cx,cy,cw,ch,12);ctx.fill();ctx.stroke();
+ctx.fillStyle='#5d4037';ctx.fillRect(cx,cy,cw,14);
+ctx.fillStyle='#000';ctx.font='800 10px Fredoka';ctx.textAlign='center';ctx.fillText('💳 MEJA KASIR • KASIR 👩‍💼 • SCAN • TAP PELANGGAN DI ATAS UNTUK BAYAR',W/2,cy+10);
+ctx.font='22px Arial';ctx.fillText('👩‍💼 🖥️ ⌨️ 💵 📠',W/2,cy+36);
 customers.forEach(c=>{
-let bob=Math.sin(t*5+c.x*0.01)*2.5;
-ctx.font='34px Arial';ctx.textAlign='center';ctx.fillText(c.icon,c.x,c.y+bob);
-if(c.cart.length>0){ctx.font='16px Arial';ctx.fillText('🧺'+c.cart.length,c.x+18,c.y-8+bob);}
-if(S.stock[c.want]<10 && c.state==='goShelf'){
-ctx.fillStyle='#fff';ctx.strokeStyle='#000';ctx.lineWidth=2.2;ctx.beginPath();ctx.roundRect(c.x-34,c.y-52,68,22,8);ctx.fill();ctx.stroke();
-ctx.fillStyle='#000';ctx.font='700 11px Fredoka';ctx.fillText('Kosong! 😭',c.x,c.y-38);
-}
+let bob=Math.sin(t*5+c.x*0.01)*2;
+ctx.font='30px Arial';ctx.textAlign='center';ctx.fillText(c.icon,c.x,c.y+bob);
+if(c.cart.length>0){ctx.font='14px Arial';ctx.fillText('🧺'+c.cart.length,c.x+16,c.y-6+bob);}
 });
 }
 
-function spawn(){
-if(!S.playing||customers.length>=6||S.queue.length>=6)return;
-let icons=['🧕','👨‍🦱','👩‍🎓','👶','🦄','👩‍👧','👳‍♂️','👩‍🦰'];
-let wants=['uni','drink','kelapa','snack'];
-let c={x:innerWidth/2,y:innerHeight+10,tx:20+Math.random()*(innerWidth-40),ty:110+Math.random()*180,icon:icons[Math.floor(Math.random()*icons.length)],want:wants[Math.floor(Math.random()*wants.length)],cart:[],state:'goShelf'};
-customers.push(c);initA();sPop();
-}
+function spawn(){if(!S.playing||customers.length>=5||S.queue.length>=6)return;let icons=['🧕','👨‍🦱','👩‍🎓','👶','🦄','👩‍👧'];let wants=['uni','drink','kelapa','snack'];customers.push({x:innerWidth/2,y:innerHeight,tx:20+Math.random()*(innerWidth-40),ty:100+Math.random()*160,icon:icons[Math.floor(Math.random()*icons.length)],want:wants[Math.floor(Math.random()*wants.length)],cart:[],state:'go'});}
 function move(){
 if(!S.playing)return;
 customers.forEach((c,i)=>{
-let dx=c.tx-c.x, dy=c.ty-c.y, d=Math.hypot(dx,dy);
-if(d<14){
-if(c.state==='goShelf'){
-if(S.stock[c.want]>8){
-S.stock[c.want]-=10+Math.random()*8;
-let add=1+Math.floor(Math.random()*2);for(let k=0;k<add;k++)c.cart.push(c.want);
-if(Math.random()<0.4)c.cart.push(['drink','snack','uni'][Math.floor(Math.random()*3)]);
-c.state='goCashier';c.tx=innerWidth/2+ (Math.random()-0.5)*80; c.ty=440;
-}else{S.star=Math.max(1,S.star-0.18);document.getElementById('st').textContent=S.star.toFixed(1);customers.splice(i,1);initA();sSad();if(S.star<=1.2)gameOver(false);}
-}else if(c.state==='goCashier'){
-S.queue.push(c);customers.splice(i,1);renderQ();initA();sPop();
-}
-}else{c.x+=dx*0.032;c.y+=dy*0.032;}
+let dx=c.tx-c.x,dy=c.ty-c.y,d=Math.hypot(dx,dy);
+if(d<12){
+if(c.state==='go'){
+if(S.stock[c.want]>8){S.stock[c.want]-=12;c.cart.push(c.want);if(Math.random()<0.5)c.cart.push(['drink','snack'][Math.floor(Math.random()*2)]);S.queue.push(c);customers.splice(i,1);renderQ();sPop();layout();}else{S.star=Math.max(1,S.star-0.15);document.getElementById('st').textContent=S.star.toFixed(1);customers.splice(i,1);}
+}else{customers.splice(i,1);}
+}else{c.x+=dx*0.03;c.y+=dy*0.03;}
 });
 setTimeout(move,16);
 }
@@ -188,25 +162,24 @@ function renderQ(){
 let q=document.getElementById('queue');q.innerHTML='';
 S.queue.forEach((c,i)=>{
 let d=document.createElement('div');d.className='qCust'+(S.sel===i?' active':'');
-d.innerHTML=`<div style="font-size:32px">${c.icon}</div><div style="font-size:9px">${c.cart.length} barang</div><div class="qNum">${i+1}</div>`;
+d.innerHTML=`<div style="font-size:28px">${c.icon}</div><div style="font-size:8px">${c.cart.length} barang</div><div class="qNum">${i+1}</div>`;
 d.onclick=()=>selCust(i);q.appendChild(d);
 });
+layout();
 }
 function selCust(i){
 S.sel=i;let c=S.queue[i];if(!c)return;
-document.getElementById('cashierArea').style.display='flex';
-document.getElementById('custIcon').textContent=c.icon;
-document.getElementById('custName').textContent='PELANGGAN '+(i+1);
-document.getElementById('custWant').textContent=c.want.toUpperCase()+' • '+c.cart.length+' barang';
-let con=document.getElementById('itemsCon');con.innerHTML='';let tot=0;
+let area=document.getElementById('cashierArea');area.style.display='flex';area.style.height='180px';
+document.getElementById('cIcon').textContent=c.icon;
+document.getElementById('cName').textContent='CUST '+(i+1);
+document.getElementById('cWant').textContent=c.want.toUpperCase();
+let box=document.getElementById('itemsBox');box.innerHTML='';let tot=0;
 c.cart.forEach((it,idx)=>{
-let price={uni:6000,drink:5000,kelapa:15000,snack:8000}[it];
-tot+=price;
-let emoji={uni:'🦄',drink:'🥤',kelapa:'🥥',snack:'🍪'}[it];
-let el=document.createElement('div');el.className='itemCard';el.style.animationDelay=idx*0.08+'s';
-el.innerHTML=`<span style="font-size:20px">${emoji}</span><span>Rp${price/1000}k</span>`;
-con.appendChild(el);
-setTimeout(()=>{initA();sType();document.getElementById('scanTxt').textContent=emoji+' SCAN...';let ml=document.getElementById('machineLight');ml.style.background='#ffeb3b';setTimeout(()=>ml.style.background='#0f0',120);},idx*160);
+let pr={uni:6000,drink:5000,kelapa:15000,snack:8000}[it];tot+=pr;
+let em={uni:'🦄',drink:'🥤',kelapa:'🥥',snack:'🍪'}[it];
+let el=document.createElement('div');el.className='itemC';el.innerHTML=`<span>${em}</span> Rp${pr/1000}k`;
+box.appendChild(el);
+setTimeout(()=>{initA();sType();document.getElementById('scan').textContent='SCAN: '+em;let l=document.getElementById('lamp');l.style.background='#ffeb3b';setTimeout(()=>l.style.background='#0f0',100);},idx*120);
 });
 if(c.cart.length>=3)tot=Math.floor(tot*0.85);
 document.getElementById('total').textContent='Rp '+tot.toLocaleString('id-ID');
@@ -214,48 +187,37 @@ renderQ();
 }
 document.getElementById('payBtn').onclick=()=>{
 if(S.sel===null)return;
-initA();
-for(let i=0;i<7;i++)setTimeout(sType,i*70);
-setTimeout(sCash,520);
+initA();for(let i=0;i<6;i++)setTimeout(sType,i*60);setTimeout(sCash,400);
 let tot=parseInt(document.getElementById('total').textContent.replace(/[^0-9]/g,''));
-S.money+=tot;S.cust++;S.star=Math.min(5,S.star+0.09);
+S.money+=tot;S.cust++;S.star=Math.min(5,S.star+0.08);
 S.queue.splice(S.sel,1);S.sel=null;
 document.getElementById('cashierArea').style.display='none';
 document.getElementById('m').textContent=S.money.toLocaleString('id-ID');
 document.getElementById('cc').textContent=S.cust;
 document.getElementById('st').textContent=S.star.toFixed(1);
-renderQ();
-if(S.money>=500000)gameOver(true);
+renderQ();layout();
+if(S.money>=500000){S.playing=false;document.getElementById('menu').style.display='flex';document.getElementById('menu').innerHTML=`<div class="card"><div style="font-size:64px">🏆🦄</div><h1>SULTAN!</h1><p>Rp ${S.money.toLocaleString('id-ID')}</p><button class="btn" style="background:#ffeb3b" onclick="location.reload()">MAIN LAGI</button></div>`;}
 };
+document.getElementById('closeCash').onclick=()=>{document.getElementById('cashierArea').style.display='none';S.sel=null;renderQ();layout();};
 document.querySelectorAll('.rb').forEach(b=>{
 b.onclick=()=>{
-initA();let k=b.dataset.k;let pr={uni:6000,drink:5000,kelapa:15000,snack:8000}[k];
-if(S.money>=pr){S.money-=pr;S.stock[k]=100;sRest();document.getElementById('m').textContent=S.money.toLocaleString('id-ID');document.getElementById('s'+k.charAt(0).toUpperCase()+k.slice(1)).textContent='100%';}else{beep(180,0.35,'sawtooth',0.4);}
+initA();let k=b.dataset.k,pr={uni:6000,drink:5000,kelapa:15000,snack:8000}[k];
+if(S.money>=pr){S.money-=pr;S.stock[k]=100;sRest();document.getElementById('m').textContent=S.money.toLocaleString('id-ID');document.getElementById('s'+k.charAt(0).toUpperCase()+k.slice(1)).textContent='100%';}
 };
 });
 canvas.addEventListener('click',e=>{
-let r=canvas.getBoundingClientRect(), x=e.clientX-r.left, y=e.clientY-r.top;
-shelves.forEach(s=>{if(x>=s.x&&x<=s.x+s.w&&y>=s.y&&y<=s.y+s.h){let k=s.k, pr=s.p;if(S.money>=pr){S.money-=pr;S.stock[k]=100;initA();sRest();document.getElementById('m').textContent=S.money.toLocaleString('id-ID');document.getElementById('s'+k.charAt(0).toUpperCase()+k.slice(1)).textContent='100%';}}});
+let r=canvas.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+shelves.forEach(s=>{if(x>=s.x&&x<=s.x+s.w&&y>=s.y&&y<=s.y+s.h){let k=s.k,pr=s.p;if(S.money>=pr){S.money-=pr;S.stock[k]=100;initA();sRest();document.getElementById('m').textContent=S.money.toLocaleString('id-ID');document.getElementById('s'+k.charAt(0).toUpperCase()+k.slice(1)).textContent='100%';}}});
 });
-function gameOver(win){
-S.playing=false;
-document.getElementById('menu').style.display='flex';
-if(win){
-document.getElementById('menu').innerHTML=`<div class="card"><div style="font-size:72px">🏆👑🦄</div><h1>SULTAN UNICORN!</h1><p style="font-size:14px">Rp ${S.money.toLocaleString('id-ID')} - ${S.cust} pelanggan!</p><p style="font-size:11px;margin:8px 0">Meja kasir Sincoy Mart penuh! Kasir Sincoy jadi sultan!</p><button class="btn" style="background:#ffeb3b" onclick="location.reload()">🔁 MAIN LAGI SULTAN</button></div>`;
-beep(600,0.2,'sine',0.5);setTimeout(()=>beep(800,0.2,'sine',0.5),200);setTimeout(()=>beep(1000,0.6,'sine',0.6),400);
-}else{
-document.getElementById('menu').innerHTML=`<div class="card"><div style="font-size:60px">😭💔</div><h1>TOKO TUTUP!</h1><p>Bintang ${S.star.toFixed(1)} - pelanggan kabur rak kosong!</p><button class="btn" style="background:#ffeb3b" onclick="location.reload()">🔁 COBA LAGI</button></div>`;
-}
-}
 document.getElementById('sound').onclick=function(){soundOn=!soundOn;this.textContent=soundOn?'🔊 ON':'🔇 OFF';if(soundOn){initA();sPop();}};
 document.getElementById('play').onclick=()=>{
 initA();S.playing=true;document.getElementById('menu').style.display='none';mkSh();
 (function loop(){if(!S.playing)return;requestAnimationFrame(loop);draw();})();move();
-setInterval(spawn,1700);
-setInterval(()=>{Object.keys(S.stock).forEach(k=>{if(S.stock[k]>0)S.stock[k]-=0.06;let el=document.getElementById('s'+k.charAt(0).toUpperCase()+k.slice(1));if(el)el.textContent=Math.floor(S.stock[k])+'%';});},100);
-draw();
+setInterval(spawn,1600);
+setInterval(()=>{Object.keys(S.stock).forEach(k=>{if(S.stock[k]>0)S.stock[k]-=0.05;let el=document.getElementById('s'+k.charAt(0).toUpperCase()+k.slice(1));if(el)el.textContent=Math.floor(S.stock[k])+'%';});},100);
+draw();layout();
 };
-draw();
+draw();layout();
 </script>
 </body>
 </html>
